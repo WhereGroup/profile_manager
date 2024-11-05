@@ -3,7 +3,7 @@
 # This file should be included when you package your plugin.# Mandatory items:
 
 [general]
-name=Profile Manager (Deprecated)
+name=Profile Manager (deprecated)
 qgisMinimumVersion=3.12
 description=(Deprecated, please update to the new Profile Manager plugin.) Makes handling profiles easy by giving you an UI to easily import settings from one profile to another
 version=0.31.1
