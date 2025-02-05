@@ -377,7 +377,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
     def __create_profile(self):
         """Creates a new profile"""
         name_dialog = NameProfileDialog()
-        if name_dialog.exec() == QDialog.Rejected:
+        if name_dialog.exec() == QDialog.DialogCode.Rejected:
             return
         profile_name = name_dialog.text_input.text()
 
@@ -404,7 +404,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         name_dialog = NameProfileDialog(
             title=self.tr("Name for copy of profile '{}'").format(source_profile_name)
         )
-        if name_dialog.exec() == QDialog.Rejected:
+        if name_dialog.exec() == QDialog.DialogCode.Rejected:
             return
         target_profile_name = name_dialog.text_input.text()
 
@@ -437,7 +437,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         old_profile_name = self.get_list_selection_profile_name()
 
         name_dialog = NameProfileDialog()
-        if name_dialog.exec() == QDialog.Rejected:
+        if name_dialog.exec() == QDialog.DialogCode.Rejected:
             return
         new_profile_name = name_dialog.text_input.text()
 
@@ -473,7 +473,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
                 )
             ),
         )
-        if do_remove_profile == QMessageBox.No:
+        if do_remove_profile == QMessageBox.StandardButton.No:
             return
 
         with wait_cursor():
@@ -531,7 +531,9 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         for item in self.list_plugins.findItems(
             "", Qt.MatchFlag.MatchContains | Qt.MatchFlag.MatchRecursive
         ):
-            if item.data(Qt.UserRole) is False:  # Core Plugins are marked with this
+            if (
+                item.data(Qt.ItemDataRole.UserRole) is False
+            ):  # Core Plugins are marked with this
                 continue
             if item.checkState() == Qt.CheckState.Checked:
                 plugin_names.append(item.text())
@@ -608,7 +610,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
                 )
             ).format(self.__profile_manager.backup_path),
         )
-        if do_remove_things == QMessageBox.No:
+        if do_remove_things == QMessageBox.StandardButton.No:
             return
 
         with wait_cursor():

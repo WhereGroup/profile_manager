@@ -42,7 +42,7 @@ class ProfileListModel(QStandardItemModel):
             Qt.ItemFlags: flags
         """
         default_flags = super().flags(index)
-        return default_flags & ~Qt.ItemIsEditable  # Disable editing
+        return default_flags & ~Qt.ItemFlags.ItemIsEditable  # Disable editing
 
     def _update_available_profiles(self) -> None:
         """Update model with all available profiles in manager"""
@@ -63,7 +63,9 @@ class ProfileListModel(QStandardItemModel):
             self.insertRow(row)
             self.setData(self.index(row, self.NAME_COL), profile.name())
             self.setData(
-                self.index(row, self.NAME_COL), profile.icon(), Qt.DecorationRole
+                self.index(row, self.NAME_COL),
+                profile.icon(),
+                Qt.ItemDataRole.DecorationRole,
             )
 
             active_profile_folder_name = Path(QgsApplication.qgisSettingsDirPath()).name
@@ -71,4 +73,6 @@ class ProfileListModel(QStandardItemModel):
             if profile_folder_name == active_profile_folder_name:
                 font = QgsApplication.font()
                 font.setItalic(True)
-                self.setData(self.index(row, self.NAME_COL), font, Qt.FontRole)
+                self.setData(
+                    self.index(row, self.NAME_COL), font, Qt.ItemDataRole.FontRole
+                )

@@ -7,7 +7,7 @@ from qgis.PyQt.QtGui import QCursor, QGuiApplication
 @contextmanager
 def wait_cursor():
     try:
-        QGuiApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
+        QGuiApplication.setOverrideCursor(QCursor(Qt.CursorShape.WaitCursor))
         yield
     finally:
         QGuiApplication.restoreOverrideCursor()

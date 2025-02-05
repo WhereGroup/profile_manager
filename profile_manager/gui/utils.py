@@ -59,7 +59,7 @@ def plugins_as_items(plugins: list[str], make_checkable: bool) -> list[QListWidg
 
         if plugin_name in CORE_PLUGINS:
             item.setFlags(item.flags() & ~Qt.ItemFlag.ItemIsEnabled)
-            item.setData(Qt.UserRole, False)  # to safely ignore them later
+            item.setData(Qt.ItemDataRole.UserRole, False)  # to safely ignore them later
             plugin_name = f"{plugin_name} (Core Plugin)"
         item.setText(plugin_name)
 
