@@ -10,8 +10,8 @@ icon=icon.png
 author=WhereGroup GmbH, Oslandia
 email=info@wheregroup.com
 homepage=https://wheregroup.com/
-repository=https://github.com/WhereGroup/profile-manager/
-tracker=https://github.com/WhereGroup/profile-manager/issues
+repository=https://github.com/WhereGroup/profile_manager/
+tracker=https://github.com/WhereGroup/profile_manager/issues
 
 # QGIS extensions manager flags
 deprecated=False

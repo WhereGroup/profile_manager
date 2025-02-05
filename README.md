@@ -1,12 +1,12 @@
 ### Profile Manager for QGIS ###
 A QGIS plugin for managing your profiles and data source connections.
 
-https://plugins.qgis.org/plugins/profile-manager/
+https://plugins.qgis.org/plugins/profile_manager/
 
-<a href="https://github.com/WhereGroup/profile-manager/assets/7661092/a64ea854-bff3-48a0-b1ff-83f3d4eaa5b7"><img src="https://github.com/WhereGroup/profile-manager/assets/7661092/a64ea854-bff3-48a0-b1ff-83f3d4eaa5b7" width="200"></a>
-<a href="https://github.com/WhereGroup/profile-manager/assets/7661092/711faa86-c36c-40bc-92ab-7b73016996ae"><img src="https://github.com/WhereGroup/profile-manager/assets/7661092/711faa86-c36c-40bc-92ab-7b73016996ae" width="200"></a>
-<a href="https://github.com/WhereGroup/profile-manager/assets/7661092/0c646930-88d8-45fe-81c8-4a5bf4501152"><img src="https://github.com/WhereGroup/profile-manager/assets/7661092/0c646930-88d8-45fe-81c8-4a5bf4501152" width="200"></a>
-<a href="https://github.com/WhereGroup/profile-manager/assets/7661092/079665d6-e0ff-45fb-a65c-3b49cd9229de"><img src="https://github.com/WhereGroup/profile-manager/assets/7661092/079665d6-e0ff-45fb-a65c-3b49cd9229de" width="200"></a>
+<a href="https://github.com/WhereGroup/profile_manager/assets/7661092/a64ea854-bff3-48a0-b1ff-83f3d4eaa5b7"><img src="https://github.com/WhereGroup/profile_manager/assets/7661092/a64ea854-bff3-48a0-b1ff-83f3d4eaa5b7" width="200"></a>
+<a href="https://github.com/WhereGroup/profile_manager/assets/7661092/711faa86-c36c-40bc-92ab-7b73016996ae"><img src="https://github.com/WhereGroup/profile_manager/assets/7661092/711faa86-c36c-40bc-92ab-7b73016996ae" width="200"></a>
+<a href="https://github.com/WhereGroup/profile_manager/assets/7661092/0c646930-88d8-45fe-81c8-4a5bf4501152"><img src="https://github.com/WhereGroup/profile_manager/assets/7661092/0c646930-88d8-45fe-81c8-4a5bf4501152" width="200"></a>
+<a href="https://github.com/WhereGroup/profile_manager/assets/7661092/079665d6-e0ff-45fb-a65c-3b49cd9229de"><img src="https://github.com/WhereGroup/profile_manager/assets/7661092/079665d6-e0ff-45fb-a65c-3b49cd9229de" width="200"></a>
 
 ### Installation ###
 To install the plugin manually just copy the folder into your QGIS profile directory under ./python/plugins/
