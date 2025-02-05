@@ -26,7 +26,9 @@ class NameProfileDialog(QDialog):
             QRegularExpressionValidator(QRegularExpression("[^/\\\\]+"))
         )
 
-        self.button_box = QDialogButtonBox.Ok | QDialogButtonBox.Cancel
+        self.button_box = (
+            QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
+        )
         self.button_box = QDialogButtonBox(self.button_box)
         self.button_box.accepted.connect(self.accept)
         self.button_box.rejected.connect(self.reject)
@@ -42,7 +44,7 @@ class NameProfileDialog(QDialog):
 
     def adjust_ok_button_state(self):
         """Disable OK button if no profile name has been entered (yet)"""
-        ok_button = self.button_box.button(QDialogButtonBox.Ok)
+        ok_button = self.button_box.button(QDialogButtonBox.StandardButton.Ok)
         if self.text_input.text() == "":
             ok_button.setEnabled(False)
         else:
