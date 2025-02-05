@@ -1,7 +1,7 @@
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtWidgets import QListWidgetItem, QTreeWidgetItem
 
-from profile_manager.datasources.plugins import CORE_PLUGINS
+from profile_manager.handlers.plugins import CORE_PLUGINS
 
 
 def data_sources_as_tree(

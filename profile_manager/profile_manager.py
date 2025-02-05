@@ -9,23 +9,23 @@ from qgis.PyQt.QtCore import QCoreApplication, QLocale, QSettings, QTranslator
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QWidget
 
-from profile_manager.datasources.bookmarks import import_bookmarks
-from profile_manager.datasources.customization import import_customizations
-from profile_manager.datasources.data_sources import (
+from profile_manager.handlers.bookmarks import import_bookmarks
+from profile_manager.handlers.customization import import_customizations
+from profile_manager.handlers.data_sources import (
     collect_data_sources,
     import_data_sources,
     remove_data_sources,
 )
-from profile_manager.datasources.expressions import import_expressions
-from profile_manager.datasources.favourites import import_favourites
-from profile_manager.datasources.models import import_models
-from profile_manager.datasources.plugins import (
+from profile_manager.handlers.expressions import import_expressions
+from profile_manager.handlers.favourites import import_favourites
+from profile_manager.handlers.models import import_models
+from profile_manager.handlers.plugins import (
     collect_plugin_names,
     import_plugins,
     remove_plugins,
 )
-from profile_manager.datasources.scripts import import_scripts
-from profile_manager.datasources.styles import import_styles
+from profile_manager.handlers.scripts import import_scripts
+from profile_manager.handlers.styles import import_styles
 from profile_manager.profile_manager_dialog import ProfileManagerDialog
 from profile_manager.profiles.profile_handler import (
     copy_profile,
