@@ -26,7 +26,9 @@ class NameProfileDialog(QDialog):
             QRegularExpressionValidator(QRegularExpression("[^/\\\\]+"))
         )
 
-        self.button_box = QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
+        self.button_box = (
+            QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
+        )
         self.button_box = QDialogButtonBox(self.button_box)
         self.button_box.accepted.connect(self.accept)
         self.button_box.rejected.connect(self.reject)
