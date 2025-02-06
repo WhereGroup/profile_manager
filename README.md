@@ -1,4 +1,4 @@
-### Profile Manager for QGIS ###
+# Profile Manager for QGIS
 A QGIS plugin for managing your profiles and data source connections.
 
 https://plugins.qgis.org/plugins/profile_manager/
@@ -8,28 +8,20 @@ https://plugins.qgis.org/plugins/profile_manager/
 <a href="https://github.com/WhereGroup/profile_manager/assets/7661092/0c646930-88d8-45fe-81c8-4a5bf4501152"><img src="https://github.com/WhereGroup/profile_manager/assets/7661092/0c646930-88d8-45fe-81c8-4a5bf4501152" width="200"></a>
 <a href="https://github.com/WhereGroup/profile_manager/assets/7661092/079665d6-e0ff-45fb-a65c-3b49cd9229de"><img src="https://github.com/WhereGroup/profile_manager/assets/7661092/079665d6-e0ff-45fb-a65c-3b49cd9229de" width="200"></a>
 
-### Installation ###
-To install the plugin manually just copy the folder into your QGIS profile directory under ./python/plugins/
+## Handle with care
+This plugin is still in an early stage. There is no thorough, automated testing yet.
+Please consider everything potentially broken and make sure you thoroughly check the
+results of your actions. We welcome bug reports and ideas for improvement. Your
+collaboration in coding or documenting its features and limitations would be highly
+appreciated.
 
-- Windows directory:
-    - `C:\Users\{USER}\AppData\Roaming\QGIS\QGIS3\profiles\{PROFILE}\python\plugins\`
-- Linux directory:
-    - `~/.local/share/QGIS/QGIS3/profiles/{PROFILE}/python/plugins`
-- MacOS directory:
-    - `~/Library/Application Support/QGIS/QGIS3/profiles`
-
-### Features ###
+## Features
 - Create a new profile
-    - Creates and initiates a new profile
-- Removing profile
-    - Removes a selected profile
-- Copy profile
-    - Creates a copy of a selected profile with a new name
-- Rename profile
-    - Renames the profile with a name provided by the user
+- Removing profiles
+- Copying profiles
+- Renaming profiles
 - Importing data source connections from one profile to another
 - Removing data source connections from a profile
-    - Removes the data source connection from the chosen SOURCE profile
 - Importing (spatial) bookmarks
 - Importing (data source) favourites
 - Importing plugins
@@ -38,17 +30,14 @@ To install the plugin manually just copy the folder into your QGIS profile direc
 - Importing scripts
 - Importing some symbology types & label settings
 - Importing QGIS UI settings (e.g. hidden toolbar items)
+- Exporting a profile in QGIS Deployment Toolkit (QDT) format
 
 On all removal operations the user is being asked if they are certain
 that he wants to delete given source/profile.
-Additionally before every deletion a backup of the complete profiles
-folder is created under the following directory:
-- Windows directory:
-    - `C:\Users\{USER}\QGIS Profile Manager Backup\`
-- Linux and MacOS directory:
-    - `~/QGIS Profile Manager Backup/`
+Additionally, before every import or deletion, a backup of the affected
+profile is created in the user's home directory.
 
-### Known (current) limitations ###
+## Known (current) limitations
 - Not all data source connections might be recognized and imported/removed
 - Not all data source connection types are supported
 - Python expression functions are not supported
@@ -56,8 +45,11 @@ folder is created under the following directory:
   tags, etc.
 - Errors might not always be communicated clearly so please TEST your
   migrated configurations before discarding originals!
+- Creating a new profile does not lead to the same result as creating
+  a new profile in the QGIS GUI, e.g. the QGIS3.ini is not populated
+  with defaults.
 
-### Funding development ###
+## Funding development
 If you consider this plugin useful and would like to see it improved, e.g.
 with support for more profile settings, becoming more stable, being more
 thoroughly documented, leave the "experimental" plugin status or whatever
