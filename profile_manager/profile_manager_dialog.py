@@ -303,38 +303,46 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         for item in items:
             plugins_widget.addItem(item)
 
-    def __set_checkstates(self, checkstate: Qt.CheckState):
+    def __set_all_checkstates(self, checkstate: Qt.CheckState):
+        """Sets the specified checkstate for all enabled checkboxes."""
         for item in self.treeWidgetSource.findItems(
             "", Qt.MatchFlag.MatchContains | Qt.MatchFlag.MatchRecursive
         ):
-            item.setCheckState(0, checkstate)
+            if item.flags() & Qt.ItemFlag.ItemIsEnabled:
+                item.setCheckState(0, checkstate)
 
         for item in self.list_plugins.findItems(
             "", Qt.MatchFlag.MatchContains | Qt.MatchFlag.MatchRecursive
         ):
-            item.setCheckState(checkstate)
+            if item.flags() & Qt.ItemFlag.ItemIsEnabled:
+                item.setCheckState(checkstate)
 
-        self.bookmark_check.setCheckState(checkstate)
-        self.favourites_check.setCheckState(checkstate)
-        self.models_check.setCheckState(checkstate)
-        self.scripts_check.setCheckState(checkstate)
-        self.styles_check.setCheckState(checkstate)
-        self.expressions_check.setCheckState(checkstate)
-        self.checkBox_checkAll.setCheckState(checkstate)
-        self.customization_check.setCheckState(checkstate)
+        checkboxes = [
+            self.bookmark_check,
+            self.favourites_check,
+            self.models_check,
+            self.scripts_check,
+            self.styles_check,
+            self.expressions_check,
+            self.checkBox_checkAll,
+            self.customization_check,
+        ]
+        for checkbox in checkboxes:
+            if checkbox.isEnabled():
+                checkbox.setCheckState(checkstate)
 
     def __toggle_all_items(self):
-        """Checks/Unchecks every checkbox in the gui"""
+        """Checks/Unchecks every enabled checkbox in the gui"""
         if self.__everything_is_checked:
             checkstate = Qt.CheckState.Unchecked
         else:
             checkstate = Qt.CheckState.Checked
-        self.__set_checkstates(checkstate)
+        self.__set_all_checkstates(checkstate)
         self.__everything_is_checked = not self.__everything_is_checked
 
     def __uncheck_everything(self):
         """Unchecks every checkbox"""
-        self.__set_checkstates(Qt.CheckState.Unchecked)
+        self.__set_all_checkstates(Qt.CheckState.Unchecked)
         self.__everything_is_checked = False
 
     def __update_data_sources_widget(
