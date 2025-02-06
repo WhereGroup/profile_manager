@@ -42,7 +42,7 @@ class ProfileListModel(QStandardItemModel):
             Qt.ItemFlags: flags
         """
         default_flags = super().flags(index)
-        return default_flags & ~Qt.ItemFlags.ItemIsEditable  # Disable editing
+        return default_flags & ~Qt.ItemFlag.ItemIsEditable  # Disable editing
 
     def _update_available_profiles(self) -> None:
         """Update model with all available profiles in manager"""
