@@ -1,10 +1,11 @@
+import errno
 import re
 from os import rename
 from pathlib import Path
 from shutil import copytree, rmtree
 from sys import platform
 
-from qgis.core import QgsApplication, QgsUserProfileManager
+from qgis.core import QgsApplication, QgsError, QgsUserProfileManager
 
 from profile_manager.profiles.utils import qgis_profiles_path
 
@@ -19,8 +20,18 @@ def create_profile(profile_name: str):
     if not re.match(VALID_PROJECT_NAME_REGEX, profile_name):
         raise ValueError("Invalid profile name")
 
+    # Unfortunately QgsUserProfileManager.createUserProfile() does not notice if
+    # the target directory already exists as of QGIS 3.40.3...
+    # So we have our own check here:
+    if Path(qgis_profiles_path() / profile_name).exists():
+        raise ValueError("Target directory already exists")
+
     qgs_profile_manager = QgsUserProfileManager(str(qgis_profiles_path()))
-    qgs_profile_manager.createUserProfile(profile_name)
+    error: QgsError = qgs_profile_manager.createUserProfile(profile_name)
+    if not error.isEmpty():
+        raise Exception(
+            f"QGIS could not create the new user profile: {error.summary()}"
+        )
 
     # Right now there is only the profile directory and the qgis.db in its root.
     # We want to be able to write things to the profile's QGIS3.ini file so:
@@ -44,7 +55,13 @@ def remove_profile(profile_name: str):
         raise ValueError("Cannot remove the profile that is currently active")
 
     profile_path = qgis_profiles_path() / profile_name
-    rmtree(profile_path)
+    try:
+        rmtree(profile_path)
+    except OSError as e:
+        if e.errno == errno.EEXIST:
+            raise ValueError("A profile with the same name already exists.")
+        else:
+            raise
 
 
 def copy_profile(source_profile_name: str, target_profile_name: str):
@@ -62,7 +79,13 @@ def copy_profile(source_profile_name: str, target_profile_name: str):
     source_profile_path = qgis_profiles_path() / source_profile_name
     profile_path = qgis_profiles_path() / target_profile_name
 
-    copytree(source_profile_path, profile_path)
+    try:
+        copytree(source_profile_path, profile_path)
+    except OSError as e:
+        if e.errno == errno.EEXIST:
+            raise ValueError("A profile with the same name already exists.")
+        else:
+            raise
 
 
 def rename_profile(old_profile_name: str, new_profile_name: str):
@@ -71,6 +94,8 @@ def rename_profile(old_profile_name: str, new_profile_name: str):
         raise ValueError("Empty old profile name provided")
     if not old_profile_name:
         raise ValueError("Empty new profile name provided")
+    if old_profile_name == new_profile_name:
+        raise ValueError("New name is identical to old name")
     if not re.match(VALID_PROJECT_NAME_REGEX, old_profile_name):
         raise ValueError("Invalid old profile name")
     if not re.match(VALID_PROJECT_NAME_REGEX, new_profile_name):
@@ -81,4 +106,10 @@ def rename_profile(old_profile_name: str, new_profile_name: str):
     profile_before_change = qgis_profiles_path() / old_profile_name
     profile_after_change = qgis_profiles_path() / new_profile_name
 
-    rename(profile_before_change, profile_after_change)
+    try:
+        rename(profile_before_change, profile_after_change)
+    except OSError as e:
+        if e.errno == errno.ENOTEMPTY:
+            raise ValueError("A profile with the same name already exists.")
+        else:
+            raise
