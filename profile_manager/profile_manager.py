@@ -50,7 +50,6 @@ class ProfileManager:
     def __init__(self, iface):
         self.backup_path = Path.home() / "QGIS Profile Manager Backup"
 
-        # TODO in QGIS 3.30 we could and should use iface.userProfileManager()
         self.qgs_profile_manager = None
 
         self.__dlg: Optional[ProfileManagerDialog] = None
