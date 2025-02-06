@@ -49,7 +49,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
 
         self.__setup_connections()
 
-        # initial population of things on import tab
+        # making sure that the combo boxes are set up correctly
         self.comboBoxNamesSource.currentTextChanged.emit(
             self.comboBoxNamesSource.currentText()
         )
@@ -83,6 +83,29 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         self.list_profiles.selectionModel().selectionChanged.connect(
             self.__conditionally_enable_profile_buttons
         )
+
+        # update import/remove buttons on selection changes
+        self.treeWidgetSource.itemClicked.connect(
+            self.__conditionally_enable_import_buttons
+        )
+        self.treeWidgetTarget.itemClicked.connect(
+            self.__conditionally_enable_import_buttons
+        )
+        self.list_plugins.itemClicked.connect(
+            self.__conditionally_enable_import_buttons
+        )
+        checkboxes = [
+            self.bookmark_check,
+            self.favourites_check,
+            self.models_check,
+            self.scripts_check,
+            self.styles_check,
+            self.expressions_check,
+            self.checkBox_checkAll,
+            self.customization_check,
+        ]
+        for checkbox in checkboxes:
+            checkbox.stateChanged.connect(self.__conditionally_enable_import_buttons)
 
     def get_list_selection_profile_name(self) -> Optional[str]:
         """Get selected profile name from list
@@ -158,13 +181,34 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
     def __conditionally_enable_import_buttons(self):
         source = self.__profile_manager.source_profile_name
         target = self.__profile_manager.target_profile_name
-        if source == target:
-            self.removeThingsButton.setEnabled(True)
+        any_thing_is_selected = any(
+            [
+                self.__selected_plugins(),
+                self.__selected_data_sources(),
+                self.bookmark_check.isChecked(),
+                self.favourites_check.isChecked(),
+                self.models_check.isChecked(),
+                self.scripts_check.isChecked(),
+                self.styles_check.isChecked(),
+                self.expressions_check.isChecked(),
+                self.customization_check.isChecked(),
+            ]
+        )
+
+        if not any_thing_is_selected:
+            # Nothing to do? Don't enable any of the buttons.
             self.importThingsButton.setEnabled(False)
-        elif source is None and target is not None:
             self.removeThingsButton.setEnabled(False)
+        elif source is None:
+            # Both importing and deleting need a *source* profile to be selected.
             self.importThingsButton.setEnabled(False)
-        elif source is not None and target is None:
+            self.removeThingsButton.setEnabled(False)
+        elif source == target and any_thing_is_selected:
+            # Don't allow importing into itself, but allow deletion of the selected things in the source profile.
+            self.importThingsButton.setEnabled(False)
+            self.removeThingsButton.setEnabled(True)
+        elif source is not None and target is None and any_thing_is_selected:
+            # Only allow deletion of the selected things in the source profile.
             self.importThingsButton.setEnabled(False)
             self.removeThingsButton.setEnabled(True)
         else:
@@ -215,7 +259,6 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
 
     def __on_source_profile_changed(self, profile_name: str):
         self.__profile_manager.change_source_profile(profile_name)
-        self.__conditionally_enable_import_buttons()
 
         if profile_name is None:
             self.treeWidgetSource.clear()
@@ -227,10 +270,10 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
             self.__update_plugins_widget(
                 "source", self.__profile_manager.source_plugins
             )
+        self.__conditionally_enable_import_buttons()
 
     def __on_target_profile_changed(self, profile_name: str):
         self.__profile_manager.change_target_profile(profile_name)
-        self.__conditionally_enable_import_buttons()
 
         if profile_name is None:
             self.treeWidgetTarget.clear()
@@ -242,6 +285,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
             self.__update_plugins_widget(
                 "target", self.__profile_manager.target_plugins
             )
+        self.__conditionally_enable_import_buttons()
 
     def populate_profile_listings(self):
         """Populates the main list as well as the comboboxes with available profile names.
@@ -250,12 +294,9 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
 
         TODO this docstring seems not correct anymore.
         TODO   how//where IS the profile model updated?
-        TODO   document WHY blocksignals is used
         """
-        self.comboBoxNamesSource.blockSignals(True)
         active_profile_name = Path(QgsApplication.qgisSettingsDirPath()).name
         self.comboBoxNamesSource.setCurrentText(active_profile_name)
-        self.comboBoxNamesSource.blockSignals(False)
 
         self.__conditionally_enable_profile_buttons()
 
@@ -303,38 +344,46 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         for item in items:
             plugins_widget.addItem(item)
 
-    def __set_checkstates(self, checkstate: Qt.CheckState):
+    def __set_all_checkstates(self, checkstate: Qt.CheckState):
+        """Sets the specified checkstate for all enabled checkboxes."""
         for item in self.treeWidgetSource.findItems(
             "", Qt.MatchFlag.MatchContains | Qt.MatchFlag.MatchRecursive
         ):
-            item.setCheckState(0, checkstate)
+            if item.flags() & Qt.ItemFlag.ItemIsEnabled:
+                item.setCheckState(0, checkstate)
 
         for item in self.list_plugins.findItems(
             "", Qt.MatchFlag.MatchContains | Qt.MatchFlag.MatchRecursive
         ):
-            item.setCheckState(checkstate)
+            if item.flags() & Qt.ItemFlag.ItemIsEnabled:
+                item.setCheckState(checkstate)
 
-        self.bookmark_check.setCheckState(checkstate)
-        self.favourites_check.setCheckState(checkstate)
-        self.models_check.setCheckState(checkstate)
-        self.scripts_check.setCheckState(checkstate)
-        self.styles_check.setCheckState(checkstate)
-        self.expressions_check.setCheckState(checkstate)
-        self.checkBox_checkAll.setCheckState(checkstate)
-        self.customization_check.setCheckState(checkstate)
+        checkboxes = [
+            self.bookmark_check,
+            self.favourites_check,
+            self.models_check,
+            self.scripts_check,
+            self.styles_check,
+            self.expressions_check,
+            self.checkBox_checkAll,
+            self.customization_check,
+        ]
+        for checkbox in checkboxes:
+            if checkbox.isEnabled():
+                checkbox.setCheckState(checkstate)
 
     def __toggle_all_items(self):
-        """Checks/Unchecks every checkbox in the gui"""
+        """Checks/Unchecks every enabled checkbox in the gui"""
         if self.__everything_is_checked:
             checkstate = Qt.CheckState.Unchecked
         else:
             checkstate = Qt.CheckState.Checked
-        self.__set_checkstates(checkstate)
+        self.__set_all_checkstates(checkstate)
         self.__everything_is_checked = not self.__everything_is_checked
 
     def __uncheck_everything(self):
         """Unchecks every checkbox"""
-        self.__set_checkstates(Qt.CheckState.Unchecked)
+        self.__set_all_checkstates(Qt.CheckState.Unchecked)
         self.__everything_is_checked = False
 
     def __update_data_sources_widget(
