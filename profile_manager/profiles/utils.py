@@ -193,7 +193,11 @@ def get_profile_plugin_information(
         name=manager_metadata["name"],
         folder_name=plugin_slug_name,
         official_repository=True,  # For now we only support official repository
-        plugin_id=int(manager_metadata["plugin_id"]) if manager_metadata["plugin_id"] else None,
+        plugin_id=(
+            int(manager_metadata["plugin_id"])
+            if manager_metadata["plugin_id"]
+            else None
+        ),
         version=define_plugin_version_from_metadata(
             manager_metadata=manager_metadata,
             plugin_metadata=plugin_metadata,
