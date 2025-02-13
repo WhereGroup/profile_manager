@@ -133,7 +133,7 @@ class PluginInformation:
     name: str
     folder_name: str
     official_repository: bool
-    plugin_id: str
+    plugin_id: Optional[int]
     version: str
 
 
@@ -193,7 +193,7 @@ def get_profile_plugin_information(
         name=manager_metadata["name"],
         folder_name=plugin_slug_name,
         official_repository=True,  # For now we only support official repository
-        plugin_id=manager_metadata["plugin_id"],
+        plugin_id=int(manager_metadata["plugin_id"]) if manager_metadata["plugin_id"] else None,
         version=define_plugin_version_from_metadata(
             manager_metadata=manager_metadata,
             plugin_metadata=plugin_metadata,
@@ -221,7 +221,7 @@ def get_profile_plugin_list_information(
 
     for plugin_name in plugin_list:
         plugin_info = get_profile_plugin_information(profile_name, plugin_name)
-        if plugin_info and plugin_info.plugin_id != "":
+        if plugin_info and plugin_info.plugin_id:
             profile_plugin_list.append(plugin_info)
 
     return profile_plugin_list
