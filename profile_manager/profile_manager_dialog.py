@@ -2,10 +2,12 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Literal, Optional
 
+from PyQt5.QtWidgets import QFileDialog
 from qgis.core import QgsApplication
 from qgis.PyQt import QtWidgets, uic
 from qgis.PyQt.QtCore import QSize, Qt
 from qgis.PyQt.QtWidgets import QDialog, QListWidget, QMessageBox, QTreeWidget
+from tenacity import sleep
 
 from profile_manager.gui.mdl_profiles import ProfileListModel
 from profile_manager.gui.name_profile_dialog import NameProfileDialog
@@ -163,8 +165,10 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
     def export_qdt_handler(self) -> None:
         """Export selected profile as QDT profile"""
         profile_path = self.qdt_file_widget.filePath()
-        if profile_path:
+        backup_path = self.qdt_backup_file_widget.filePath() # NEW sets backup_path from Widget
+        if profile_path and backup_path: # NEW check for both
             source_profile_name = self.qdt_export_profile_cbx.currentText()
+            make = self.__profile_manager.make_backup(source_profile_name, backup_path) # NEW idk how to name it tbh
             export_profile_for_qdt(
                 profile_name=source_profile_name,
                 export_path=Path(profile_path),
