@@ -4,7 +4,6 @@ from pathlib import Path
 from shutil import copytree
 from typing import Optional
 
-
 from qgis.core import Qgis, QgsMessageLog, QgsUserProfileManager
 from qgis.PyQt.QtCore import QCoreApplication, QLocale, QSettings, QTranslator
 from qgis.PyQt.QtGui import QIcon
@@ -167,9 +166,9 @@ class ProfileManager:
 
         if not backup_path.exists():
             QgsMessageLog.logMessage(
-                f'invalid backup path: {backup_dir}',
+                f"invalid backup path: {backup_dir}",
                 "Profile Manager",
-                level=Qgis.MessageLevel.Info
+                level=Qgis.MessageLevel.Info,
             )
         # return ?
         ######################################################################
