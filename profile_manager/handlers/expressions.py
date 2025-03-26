@@ -9,8 +9,8 @@ def import_expressions(source_qgis_ini_file: Path, target_qgis_ini_file: Path):
     ...
     [expressions]
     ...
-    user\test_expression\expression=1 + 1
-    user\test_expression\helpText="..."
+    user\\test_expression\\expression=1 + 1
+    user\\test_expression\\helpText="..."
     ...
 
     Note: This does not handle Python expression functions yet. TODO

@@ -13,7 +13,7 @@ def import_customizations(source_profile_path: Path, target_profile_path: Path):
     E.g.
     [Customization]
     Browser=true
-    Browser\AFS=false
+    Browser\\AFS=false
     ...
 
     Args:
