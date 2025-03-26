@@ -1,35 +1,24 @@
-FORMS = ../../profile_manager_dialog_base.ui
+FORMS =	../../profile_manager_dialog_base.ui
 
-SOURCES = \
-	../../utils.py \
-	../../profiles/profile_copier.py \
-	../../profiles/profile_editor.py \
-	../../profiles/profile_remover.py \
-	../../profiles/profile_creator.py \
-	../../profiles/profile_action_handler.py \
-	../../profiles/utils.py \
-	../../profile_manager_dialog.py \
-	../../gui/interface_handler.py \
+SOURCES =	../../gui/mdl_profiles.py \
 	../../gui/name_profile_dialog.py \
-	../../gui/mdl_profiles.py \
+	../../gui/utils.py \
+	../../handlers/bookmarks.py \
+	../../handlers/customization.py \
+	../../handlers/data_sources.py \
+	../../handlers/expressions.py \
+	../../handlers/favourites.py \
+	../../handlers/models.py \
+	../../handlers/plugins.py \
+	../../handlers/scripts.py \
+	../../handlers/styles.py \
 	../../profile_manager.py \
+	../../profile_manager_dialog.py \
+	../../profiles/profile_handler.py \
+	../../profiles/utils.py \
 	../../qdt_export/profile_export.py \
-	../../datasources/functions/function_handler.py \
-	../../datasources/dataservices/datasource_distributor.py \
-	../../datasources/dataservices/datasource_provider.py \
-	../../datasources/dataservices/datasource_handler.py \
-	../../datasources/bookmarks/bookmark_handler.py \
-	../../datasources/favourites/favourites_handler.py \
-	../../datasources/models/script_handler.py \
-	../../datasources/models/model_handler.py \
-	../../datasources/plugins/plugin_remover.py \
-	../../datasources/plugins/plugin_handler.py \
-	../../datasources/plugins/plugin_displayer.py \
-	../../datasources/plugins/plugin_importer.py \
-	../../datasources/customizations/customization_handler.py \
-	../../datasources/styles/style_handler.py
+	../../utils.py
 
-TRANSLATIONS = \
-	ProfileManager_de.ts \
+TRANSLATIONS =	ProfileManager_de.ts \
 	ProfileManager_fr.ts \
 	ProfileManager_it.ts
