@@ -7,7 +7,7 @@ Configuration for project documentation using Sphinx.
 # standard
 import sys
 from datetime import datetime
-from os import environ, path
+from os import path
 
 sys.path.insert(0, path.abspath(".."))  # move into project package
 
