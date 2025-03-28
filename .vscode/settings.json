@@ -1,0 +1,50 @@
+{
+    // Editor
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.formatOnSave": true,
+    "files.associations": {
+        "./requirements/*.txt": "pip-requirements",
+        "metadata.txt": "ini",
+        "**/*.ts": "xml",
+        "**/*.ui": "xml"
+    },
+    // Markdown
+    "markdown.updateLinksOnFileMove.enabled": "prompt",
+    "markdown.updateLinksOnFileMove.enableForDirectories": true,
+    "markdown.validate.enabled": true,
+    "markdown.validate.fileLinks.markdownFragmentLinks": "warning",
+    "markdown.validate.fragmentLinks.enabled": "warning",
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+        "files.trimTrailingWhitespace": false,
+    },
+    // Python
+    "python.analysis.autoFormatStrings": false, // incompatible with PyQt5 translation engine
+    "python.analysis.typeCheckingMode": "basic",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.terminal.activateEnvironment": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.rulers": [
+            88
+        ],
+        "editor.wordWrapColumn": 88,
+    },
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    // Extensions
+    "autoDocstring.docstringFormat": "sphinx",
+    "autoDocstring.guessTypes": true,
+    "flake8.args": [
+        "--config=setup.cfg",
+        "--verbose"
+    ],
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.yml"
+    }
+}
