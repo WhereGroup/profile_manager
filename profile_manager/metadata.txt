@@ -9,7 +9,7 @@ icon=icon.png
 # credits and contact
 author=WhereGroup GmbH, Oslandia
 email=info@wheregroup.com
-homepage=https://wheregroup.com/
+homepage=https://WhereGroup.github.io/profile_manager/
 repository=https://github.com/WhereGroup/profile_manager/
 tracker=https://github.com/WhereGroup/profile_manager/issues
 
