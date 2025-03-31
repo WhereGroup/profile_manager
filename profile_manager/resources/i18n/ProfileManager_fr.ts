@@ -1,200 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
-<context>
-    <name>@default</name>
-</context>
-<context>
-    <name>InterfaceHandler</name>
-</context>
+<TS version="2.1" language="fr">
 <context>
     <name>NameProfileDialog</name>
     <message>
         <location filename="../../gui/name_profile_dialog.py" line="18"/>
         <source>Create Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Créer un profil</translation>
     </message>
     <message>
         <location filename="../../gui/name_profile_dialog.py" line="23"/>
         <source>Profile Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom du profil</translation>
     </message>
-</context>
-<context>
-    <name>ProfileCopier</name>
-</context>
-<context>
-    <name>ProfileCreator</name>
-</context>
-<context>
-    <name>ProfileEditor</name>
 </context>
 <context>
     <name>ProfileListModel</name>
     <message>
         <location filename="../../gui/mdl_profiles.py" line="23"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom</translation>
     </message>
 </context>
 <context>
     <name>ProfileManager</name>
     <message>
-        <location filename="../../profile_manager.py" line="72"/>
-        <source>&amp;Profile Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../profile_manager.py" line="99"/>
-        <source>Profile Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../profile_manager.py" line="174"/>
+        <location filename="../../profile_manager.py" line="175"/>
         <source>Error while creating backup: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="180"/>
+        <location filename="../../profile_manager.py" line="181"/>
         <source>Creation of profile &apos;{0}&apos; failed due to error:
 {1}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="190"/>
+        <location filename="../../profile_manager.py" line="191"/>
         <source>Copying of profile &apos;{0}&apos; to &apos;{1}&apos; failed due to error:
 {2}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="200"/>
+        <location filename="../../profile_manager.py" line="201"/>
         <source>Renaming of profile &apos;{0}&apos; failed due to error:
 {1}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="208"/>
+        <location filename="../../profile_manager.py" line="209"/>
         <source>Removal of profile &apos;{0}&apos; failed due to error:
 {1}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="227"/>
+        <location filename="../../profile_manager.py" line="228"/>
         <source>Cannot import things from profile into itself</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="229"/>
+        <location filename="../../profile_manager.py" line="230"/>
         <source>No target profile selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="233"/>
+        <location filename="../../profile_manager.py" line="234"/>
         <source>Importing {} data sources...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="247"/>
+        <location filename="../../profile_manager.py" line="248"/>
         <source>Error while importing data sources: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="253"/>
+        <location filename="../../profile_manager.py" line="254"/>
         <source>Importing {} plugins...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="266"/>
+        <location filename="../../profile_manager.py" line="267"/>
         <source>Error while importing plugins: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="272"/>
+        <location filename="../../profile_manager.py" line="273"/>
         <source>Importing bookmarks...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="283"/>
+        <location filename="../../profile_manager.py" line="284"/>
         <source>Error while importing bookmarks: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="288"/>
+        <location filename="../../profile_manager.py" line="289"/>
         <source>Importing favourites...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="296"/>
+        <location filename="../../profile_manager.py" line="297"/>
         <source>Error while importing favourites: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="301"/>
+        <location filename="../../profile_manager.py" line="302"/>
         <source>Importing models...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="309"/>
+        <location filename="../../profile_manager.py" line="310"/>
         <source>Error while importing models: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="314"/>
+        <location filename="../../profile_manager.py" line="315"/>
         <source>Importing scripts...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="322"/>
+        <location filename="../../profile_manager.py" line="323"/>
         <source>Error while importing scripts: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="327"/>
+        <location filename="../../profile_manager.py" line="328"/>
         <source>Importing styles...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="335"/>
+        <location filename="../../profile_manager.py" line="336"/>
         <source>Error while importing styles: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="340"/>
+        <location filename="../../profile_manager.py" line="341"/>
         <source>Importing expressions...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="348"/>
+        <location filename="../../profile_manager.py" line="349"/>
         <source>Error while importing expressions: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="353"/>
+        <location filename="../../profile_manager.py" line="354"/>
         <source>Importing customizations...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="363"/>
+        <location filename="../../profile_manager.py" line="364"/>
         <source>Error while importing UI customizations: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="376"/>
+        <location filename="../../profile_manager.py" line="377"/>
         <source>Removing {} data sources...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="390"/>
+        <location filename="../../profile_manager.py" line="391"/>
         <source>Error while removing data sources: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="396"/>
+        <location filename="../../profile_manager.py" line="397"/>
         <source>Removing {} plugins...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="408"/>
+        <location filename="../../profile_manager.py" line="409"/>
         <source>Error while removing plugins: {}</source>
         <translation type="unfinished"></translation>
     </message>
@@ -204,67 +179,67 @@
     <message>
         <location filename="../../profile_manager_dialog.py" line="175"/>
         <source>QDT profile export</source>
-        <translation type="unfinished"></translation>
+        <translation>Export du profil pour QDT</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="175"/>
         <source>QDT profile have been successfully exported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le profil a été correctement exporté pour QDT.</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="225"/>
         <source>Please choose a profile to remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Merci de choisir un profil à supprimer</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="229"/>
         <source>Please choose a profile to rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Merci de choisir un profil à renommer</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="233"/>
         <source>Please select a profile to copy from</source>
-        <translation type="unfinished"></translation>
+        <translation>Merci de choisir un profil à dupliquer</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="242"/>
         <source>The active profile cannot be removed</source>
-        <translation type="unfinished"></translation>
+        <translation>Le profil actif ne peut être supprimé</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="246"/>
         <source>The active profile cannot be renamed</source>
-        <translation type="unfinished"></translation>
+        <translation>Le profil actif ne peut être renommé</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="437"/>
         <source>Profile could not be created</source>
-        <translation type="unfinished"></translation>
+        <translation>Le profil n'a pas pu être créé</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="441"/>
         <source>Profile created</source>
-        <translation type="unfinished"></translation>
+        <translation>Profil créé</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="441"/>
         <source>Profile &apos;{}&apos; successfully created.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le profil {} a été correctement créé.</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="453"/>
         <source>Name for copy of profile &apos;{}&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de la copie du profil '{}'</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="466"/>
         <source>Profile &apos;{0}&apos; could not be copied to &apos;{1}&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Le profil '{0}' n'a pas pu être copié vers '{1}'</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="474"/>
         <source>Profile copied</source>
-        <translation type="unfinished"></translation>
+        <translation>Profil copié</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="474"/>
@@ -289,7 +264,7 @@
     <message>
         <location filename="../../profile_manager_dialog.py" line="516"/>
         <source>Remove Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer le profil</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="516"/>
@@ -317,7 +292,7 @@ A backup will be created at &apos;{1}</source>
     <message>
         <location filename="../../profile_manager_dialog.py" line="547"/>
         <source>Profile removed</source>
-        <translation type="unfinished"></translation>
+        <translation>Profil supprimé</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog.py" line="547"/>
@@ -472,22 +447,22 @@ A backup will be created at &apos;{1}</source>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="283"/>
         <source>Bookmarks</source>
-        <translation type="unfinished"></translation>
+        <translation>Signets spatiaux</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="290"/>
         <source>Favourites</source>
-        <translation type="unfinished"></translation>
+        <translation>Favoris</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="297"/>
         <source>Models</source>
-        <translation type="unfinished"></translation>
+        <translation>Modèles</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="304"/>
         <source>Scripts</source>
-        <translation type="unfinished"></translation>
+        <translation>Scripts</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="311"/>
@@ -497,7 +472,7 @@ A backup will be created at &apos;{1}</source>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="318"/>
         <source>UI Customization (e.g. hidden toolbar icons)</source>
-        <translation type="unfinished"></translation>
+        <translation>Personnalisation de l'interface</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="210"/>
@@ -517,60 +492,57 @@ A backup will be created at &apos;{1}</source>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="353"/>
         <source>QDT Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Export pour QDT</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="365"/>
         <source>Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Profil</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="372"/>
         <source>QGIS min. version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version minimale de QGIS</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="379"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Description</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="389"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>Email du responsable</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="402"/>
         <source>Clear export folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Nettoyer le dossier de destination</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="425"/>
         <source>Export inactive plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>Inclure les plugins non activés</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="432"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version du profil</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="439"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporter</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="446"/>
         <source>QGIS max. version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version maximum de QGIS</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="466"/>
         <source>Export folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Dossier de destination</translation>
     </message>
-</context>
-<context>
-    <name>ProfileRemover</name>
 </context>
 </TS>

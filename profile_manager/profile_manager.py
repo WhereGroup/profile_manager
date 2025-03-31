@@ -9,6 +9,7 @@ from qgis.PyQt.QtCore import QCoreApplication, QLocale, QSettings, QTranslator
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QWidget
 
+from profile_manager.__about__ import __title__, __title_clean__
 from profile_manager.handlers.bookmarks import import_bookmarks
 from profile_manager.handlers.customization import import_customizations
 from profile_manager.handlers.data_sources import (
@@ -36,7 +37,7 @@ from profile_manager.profiles.profile_handler import (
 from profile_manager.profiles.utils import get_profile_qgis_ini_path, qgis_profiles_path
 from profile_manager.utils import wait_cursor
 
-LOGGER = logging.getLogger("profile_manager")
+LOGGER = logging.getLogger(__title_clean__)
 logging.basicConfig(
     format="%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s",
     datefmt="%H:%M:%S",
@@ -69,7 +70,7 @@ class ProfileManager:
 
         # Declare instance attributes
         self.action: Optional[QAction] = None
-        self.menu = self.tr("&Profile Manager")
+        self.menu = __title__
 
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
@@ -96,7 +97,7 @@ class ProfileManager:
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
         icon = QIcon(str(self.__plugin_dir / "icon.png"))
-        action = QAction(icon, self.tr("Profile Manager"), self.iface.mainWindow())
+        action = QAction(icon, __title__, self.iface.mainWindow())
         action.triggered.connect(self.run)
         action.setEnabled(True)
         self.iface.addToolBarIcon(action)
@@ -165,7 +166,7 @@ class ProfileManager:
         source_path = qgis_profiles_path() / profile_name
         QgsMessageLog.logMessage(
             f"Backing up profile {profile_name!r} to {target_path!r}",
-            "Profile Manager",
+            __title__,
             level=Qgis.MessageLevel.Info,
         )
         try:
@@ -234,7 +235,7 @@ class ProfileManager:
                 self.tr("Importing {} data sources...").format(
                     sum([len(v) for v in data_sources.values()])
                 ),
-                "Profile Manager",
+                __title__,
                 level=Qgis.MessageLevel.Info,
             )
             try:
@@ -252,7 +253,7 @@ class ProfileManager:
         if plugins:
             QgsMessageLog.logMessage(
                 self.tr("Importing {} plugins...").format(len(plugins)),
-                "Profile Manager",
+                __title__,
                 level=Qgis.MessageLevel.Info,
             )
             try:
@@ -271,7 +272,7 @@ class ProfileManager:
         if do_import_bookmarks:
             QgsMessageLog.logMessage(
                 self.tr("Importing bookmarks..."),
-                "Profile Manager",
+                __title__,
                 level=Qgis.MessageLevel.Info,
             )
             try:
@@ -287,7 +288,7 @@ class ProfileManager:
         if do_import_favourites:
             QgsMessageLog.logMessage(
                 self.tr("Importing favourites..."),
-                "Profile Manager",
+                __title__,
                 level=Qgis.MessageLevel.Info,
             )
             try:
@@ -300,7 +301,7 @@ class ProfileManager:
         if do_import_models:
             QgsMessageLog.logMessage(
                 self.tr("Importing models..."),
-                "Profile Manager",
+                __title__,
                 level=Qgis.MessageLevel.Info,
             )
             try:
@@ -313,7 +314,7 @@ class ProfileManager:
         if do_import_scripts:
             QgsMessageLog.logMessage(
                 self.tr("Importing scripts..."),
-                "Profile Manager",
+                __title__,
                 level=Qgis.MessageLevel.Info,
             )
             try:
@@ -326,7 +327,7 @@ class ProfileManager:
         if do_import_styles:
             QgsMessageLog.logMessage(
                 self.tr("Importing styles..."),
-                "Profile Manager",
+                __title__,
                 level=Qgis.MessageLevel.Info,
             )
             try:
@@ -339,7 +340,7 @@ class ProfileManager:
         if do_import_expressions:
             QgsMessageLog.logMessage(
                 self.tr("Importing expressions..."),
-                "Profile Manager",
+                __title__,
                 level=Qgis.MessageLevel.Info,
             )
             try:
@@ -352,7 +353,7 @@ class ProfileManager:
         if do_import_customizations:
             QgsMessageLog.logMessage(
                 self.tr("Importing customizations..."),
-                "Profile Manager",
+                __title__,
                 level=Qgis.MessageLevel.Info,
             )
             try:
@@ -377,7 +378,7 @@ class ProfileManager:
                 self.tr("Removing {} data sources...").format(
                     sum([len(v) for v in data_sources.values()])
                 ),
-                "Profile Manager",
+                __title__,
                 level=Qgis.MessageLevel.Info,
             )
             try:
@@ -395,7 +396,7 @@ class ProfileManager:
         if plugins:
             QgsMessageLog.logMessage(
                 self.tr("Removing {} plugins...").format(len(plugins)),
-                "Profile Manager",
+                __title__,
                 level=Qgis.MessageLevel.Info,
             )
             try:

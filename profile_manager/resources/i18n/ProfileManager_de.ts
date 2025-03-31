@@ -170,8 +170,8 @@
     </message>
     <message>
         <location filename="../../profile_manager.py" line="354"/>
-        <source>Data Source Import</source>
-        <translation type="obsolete">Datenquellenimport</translation>
+        <source>Importing customizations...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../profile_manager.py" line="346"/>
@@ -223,161 +223,146 @@ A backup will be created at &apos;{}&apos;</source>
 Ein Backup wird in '{}' erstellt.</translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="72"/>
-        <source>&amp;Profile Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../profile_manager.py" line="99"/>
-        <source>Profile Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../profile_manager.py" line="174"/>
+        <location filename="../../profile_manager.py" line="175"/>
         <source>Error while creating backup: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="180"/>
+        <location filename="../../profile_manager.py" line="181"/>
         <source>Creation of profile &apos;{0}&apos; failed due to error:
 {1}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="190"/>
+        <location filename="../../profile_manager.py" line="191"/>
         <source>Copying of profile &apos;{0}&apos; to &apos;{1}&apos; failed due to error:
 {2}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="200"/>
+        <location filename="../../profile_manager.py" line="201"/>
         <source>Renaming of profile &apos;{0}&apos; failed due to error:
 {1}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="208"/>
+        <location filename="../../profile_manager.py" line="209"/>
         <source>Removal of profile &apos;{0}&apos; failed due to error:
 {1}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="227"/>
+        <location filename="../../profile_manager.py" line="228"/>
         <source>Cannot import things from profile into itself</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="229"/>
+        <location filename="../../profile_manager.py" line="230"/>
         <source>No target profile selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="233"/>
+        <location filename="../../profile_manager.py" line="234"/>
         <source>Importing {} data sources...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="247"/>
+        <location filename="../../profile_manager.py" line="248"/>
         <source>Error while importing data sources: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="253"/>
+        <location filename="../../profile_manager.py" line="254"/>
         <source>Importing {} plugins...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="266"/>
+        <location filename="../../profile_manager.py" line="267"/>
         <source>Error while importing plugins: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="272"/>
+        <location filename="../../profile_manager.py" line="273"/>
         <source>Importing bookmarks...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="283"/>
+        <location filename="../../profile_manager.py" line="284"/>
         <source>Error while importing bookmarks: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="288"/>
+        <location filename="../../profile_manager.py" line="289"/>
         <source>Importing favourites...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="296"/>
+        <location filename="../../profile_manager.py" line="297"/>
         <source>Error while importing favourites: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="301"/>
+        <location filename="../../profile_manager.py" line="302"/>
         <source>Importing models...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="309"/>
+        <location filename="../../profile_manager.py" line="310"/>
         <source>Error while importing models: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="314"/>
+        <location filename="../../profile_manager.py" line="315"/>
         <source>Importing scripts...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="322"/>
+        <location filename="../../profile_manager.py" line="323"/>
         <source>Error while importing scripts: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="327"/>
+        <location filename="../../profile_manager.py" line="328"/>
         <source>Importing styles...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="335"/>
+        <location filename="../../profile_manager.py" line="336"/>
         <source>Error while importing styles: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="340"/>
+        <location filename="../../profile_manager.py" line="341"/>
         <source>Importing expressions...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="348"/>
+        <location filename="../../profile_manager.py" line="349"/>
         <source>Error while importing expressions: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="353"/>
-        <source>Importing customizations...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../profile_manager.py" line="363"/>
+        <location filename="../../profile_manager.py" line="364"/>
         <source>Error while importing UI customizations: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="376"/>
+        <location filename="../../profile_manager.py" line="377"/>
         <source>Removing {} data sources...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="390"/>
+        <location filename="../../profile_manager.py" line="391"/>
         <source>Error while removing data sources: {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="396"/>
+        <location filename="../../profile_manager.py" line="397"/>
         <source>Removing {} plugins...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager.py" line="408"/>
+        <location filename="../../profile_manager.py" line="409"/>
         <source>Error while removing plugins: {}</source>
         <translation type="unfinished"></translation>
     </message>
