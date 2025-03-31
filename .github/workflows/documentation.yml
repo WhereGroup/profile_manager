@@ -25,7 +25,7 @@ on:
 
   workflow_run:
     workflows:
-      - "Packager 📦"
+      - "📦 Packaging & 🚀 Release"
     types:
       - completed
 
