@@ -1,0 +1,105 @@
+name: "📚 Documentation"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/documentation.yml"
+      - "docs/*/**"
+      - "profile_manager/**/*.py"
+      - "profile_manager/metadata.txt"
+      - "requirements/documentation.txt"
+    tags:
+      - "*"
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/documentation.yml"
+      - docs/**/*
+      - requirements/documentation.txt
+
+  workflow_dispatch:
+
+  workflow_run:
+    workflows:
+      - "📦 Packaging & 🚀 Release"
+    types:
+      - completed
+
+# Allow one concurrent deployment per branch/pr
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  PROJECT_FOLDER: "profile_manager"
+  PYTHON_VERSION: 3.9
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get source code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          cache: "pip"
+          cache-dependency-path: "requirements/documentation.txt"
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -U -r requirements/documentation.txt
+
+      - name: Build doc using Sphinx
+        run: sphinx-build -b html -d docs/_build/cache -j auto docs docs/_build/html
+
+      - name: Save build doc as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation
+          path: docs/_build/html/*
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Download artifact from build workflow
+        if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main')
+        uses: dawidd6/action-download-artifact@19f6be5f04a702e84928b9c7db33da57bd5415c2
+        with:
+          allow_forks: false
+          branch: main
+          event: push
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          if_no_artifact_found: warn
+          name: ${{ env.PROJECT_FOLDER }}-latest
+          path: docs/_build/html/
+          # run_id: ${{ github.event.workflow_run.id }}
+          workflow: package_and_release.yml
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main')
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main')
+        with:
+          path: docs/_build/html/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main')
+        uses: actions/deploy-pages@v4
