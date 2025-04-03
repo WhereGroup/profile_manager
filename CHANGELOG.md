@@ -17,23 +17,19 @@ Unreleased
 -->
 
 ## 0.6.0 - 2025-04-03
-### Bugs fixes 🐛
+
 * fix(qdt profile): plugin_id should be an int by @jmkerloch in https://github.com/WhereGroup/profile_manager/pull/49
 * fix(docstrings): escape chars in sample ini files to allow code introspection by @Guts in https://github.com/WhereGroup/profile_manager/pull/51
-### Features and enhancements 🎉
 * Big refactoring number 2 by @kannes in https://github.com/WhereGroup/profile_manager/pull/34
 * Fix wrong enum by @kannes in https://github.com/WhereGroup/profile_manager/pull/41
 * UI improvements by @kannes in https://github.com/WhereGroup/profile_manager/pull/45
 * Misc improvements by @kannes in https://github.com/WhereGroup/profile_manager/pull/44
 * Documentation: complete contributing guide and publish to GitHub Pages using GitHub Actions by @Guts in https://github.com/WhereGroup/profile_manager/pull/52
 * Tooling: add script to update translation by @Guts in https://github.com/WhereGroup/profile_manager/pull/54
-### Tooling 🔧
 * update(tooling): add a proposed VS Code configuration to match contributing guidelines by @Guts in https://github.com/WhereGroup/profile_manager/pull/53
 * add(tooling): dependabot configuration to track on dependencies update by @Guts in https://github.com/WhereGroup/profile_manager/pull/58
 * Check Qt6 support flag by @kannes in https://github.com/WhereGroup/profile_manager/pull/57
-### Documentation 📖
 * Adjust URLs to new profile directory name by @kannes in https://github.com/WhereGroup/profile_manager/pull/40
-### Other Changes
 * change(license): use GPLv2 instead of MIT to comply with upstream licenses (Qt/QGIS) by @Guts in https://github.com/WhereGroup/profile_manager/pull/18
 * Drop experimental flag by @kannes in https://github.com/WhereGroup/profile_manager/pull/55
 
