@@ -3,10 +3,10 @@ A QGIS plugin for managing your profiles and data source connections.
 
 https://plugins.qgis.org/plugins/profile_manager/
 
-<a href="https://github.com/WhereGroup/profile_manager/assets/7661092/a64ea854-bff3-48a0-b1ff-83f3d4eaa5b7"><img src="https://github.com/WhereGroup/profile_manager/assets/7661092/a64ea854-bff3-48a0-b1ff-83f3d4eaa5b7" width="200"></a>
-<a href="https://github.com/WhereGroup/profile_manager/assets/7661092/711faa86-c36c-40bc-92ab-7b73016996ae"><img src="https://github.com/WhereGroup/profile_manager/assets/7661092/711faa86-c36c-40bc-92ab-7b73016996ae" width="200"></a>
-<a href="https://github.com/WhereGroup/profile_manager/assets/7661092/0c646930-88d8-45fe-81c8-4a5bf4501152"><img src="https://github.com/WhereGroup/profile_manager/assets/7661092/0c646930-88d8-45fe-81c8-4a5bf4501152" width="200"></a>
-<a href="https://github.com/WhereGroup/profile_manager/assets/7661092/079665d6-e0ff-45fb-a65c-3b49cd9229de"><img src="https://github.com/WhereGroup/profile_manager/assets/7661092/079665d6-e0ff-45fb-a65c-3b49cd9229de" width="200"></a>
+<a href="https://github.com/user-attachments/assets/689a9009-1cab-4268-895f-ad73899e60da"><img src="https://github.com/user-attachments/assets/689a9009-1cab-4268-895f-ad73899e60da" width="200"></a>
+<a href="https://github.com/user-attachments/assets/a0087fdf-e888-489d-9a6c-6b6ce86ff414"><img src="https://github.com/user-attachments/assets/a0087fdf-e888-489d-9a6c-6b6ce86ff414" width="200"></a>
+<a href="https://github.com/user-attachments/assets/7e84611c-2fa3-477c-b65c-55654f48e7d2"><img src="https://github.com/user-attachments/assets/7e84611c-2fa3-477c-b65c-55654f48e7d2" width="200"></a>
+<a href="https://github.com/user-attachments/assets/6397396f-667f-46e8-a344-4228e9189a85"><img src="https://github.com/user-attachments/assets/6397396f-667f-46e8-a344-4228e9189a85" width="200"></a>
 
 ## Handle with care
 This plugin is still in an early stage. There is no thorough, automated testing yet.
