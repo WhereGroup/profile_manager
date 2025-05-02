@@ -12,7 +12,7 @@ from profile_manager.profiles.utils import (
     qgis_profiles_path,
 )
 
-QDT_PROFILE_SCHEMA = "https://raw.githubusercontent.com/Guts/qgis-deployment-cli/main/docs/schemas/profile/qgis_profile.json"
+QDT_PROFILE_SCHEMA = "https://raw.githubusercontent.com/qgis-deployment/qgis-deployment-toolbelt-cli/main/docs/schemas/profile/qgis_profile.json"
 
 
 @dataclass
