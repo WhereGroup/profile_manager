@@ -5,8 +5,11 @@ from typing import Literal, Optional
 from qgis.core import QgsApplication
 from qgis.PyQt import QtWidgets, uic
 from qgis.PyQt.QtCore import QSize, Qt
+from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QDialog, QListWidget, QMessageBox, QTreeWidget
 
+# plugin
+from profile_manager.__about__ import DIR_PLUGIN_ROOT
 from profile_manager.gui.mdl_profiles import ProfileListModel
 from profile_manager.gui.name_profile_dialog import NameProfileDialog
 from profile_manager.gui.utils import data_sources_as_tree, plugins_as_items
@@ -55,6 +58,16 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         )
         self.comboBoxNamesTarget.currentTextChanged.emit(
             self.comboBoxNamesTarget.currentText()
+        )
+
+        # tabs icons
+        self.tabWidget.setTabIcon(0, QgsApplication.getThemeIcon("user.svg"))
+        self.tabWidget.setTabIcon(
+            1, QgsApplication.getThemeIcon("mActionSharingImport.svg")
+        )
+        self.tabWidget.setTabIcon(
+            2,
+            QIcon(str(DIR_PLUGIN_ROOT.joinpath("resources", "images", "logo_qdt.svg"))),
         )
 
     def __setup_connections(self):
