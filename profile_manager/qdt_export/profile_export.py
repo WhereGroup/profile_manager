@@ -55,8 +55,11 @@ def qdt_profile_dict(
     """
     # Get profile installed plugin
     only_activated = not export_inactive_plugin
-    profile_plugin_list = get_profile_plugin_list_information(
-        profile_name=profile_name, only_activated=only_activated
+    profile_plugin_list = sorted(
+        get_profile_plugin_list_information(
+            profile_name=profile_name, only_activated=only_activated
+        ),
+        key=lambda x: x.name.lower(),
     )
 
     return {
