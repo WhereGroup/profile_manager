@@ -1,4 +1,3 @@
-import dataclasses
 import json
 from pathlib import Path
 from shutil import copytree, rmtree
@@ -72,7 +71,7 @@ def qdt_profile_dict(
         "qgisMinimumVersion": qdt_profile_infos.qgis_min_version,
         "qgisMaximumVersion": qdt_profile_infos.qgis_max_version,
         "version": qdt_profile_infos.version,
-        "plugins": [dataclasses.asdict(plugin) for plugin in profile_plugin_list],
+        "plugins": [plugin.as_dict() for plugin in profile_plugin_list],
     }
 
 
