@@ -1,6 +1,5 @@
 import dataclasses
 import json
-from dataclasses import dataclass
 from pathlib import Path
 from shutil import copytree, rmtree
 from typing import Any, Dict
@@ -11,19 +10,9 @@ from profile_manager.profiles.utils import (
     get_profile_plugin_list_information,
     qgis_profiles_path,
 )
+from profile_manager.qdt_export.models import QDTProfileInfos
 
 QDT_PROFILE_SCHEMA = "https://raw.githubusercontent.com/qgis-deployment/qgis-deployment-toolbelt-cli/main/docs/schemas/profile/qgis_profile.json"
-
-
-@dataclass
-class QDTProfileInfos:
-    """Store informations for QDT profile creation"""
-
-    description: str = ""
-    email: str = ""
-    version: str = ""
-    qgis_min_version: str = ""
-    qgis_max_version: str = ""
 
 
 def get_qdt_profile_infos_from_file(profile_file: Path) -> QDTProfileInfos:

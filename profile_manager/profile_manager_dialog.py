@@ -13,8 +13,8 @@ from profile_manager.__about__ import DIR_PLUGIN_ROOT
 from profile_manager.gui.mdl_profiles import ProfileListModel
 from profile_manager.gui.name_profile_dialog import NameProfileDialog
 from profile_manager.gui.utils import data_sources_as_tree, plugins_as_items
+from profile_manager.qdt_export.models import QDTProfileInfos
 from profile_manager.qdt_export.profile_export import (
-    QDTProfileInfos,
     export_profile_for_qdt,
     get_qdt_profile_infos_from_file,
 )
