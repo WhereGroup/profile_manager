@@ -176,8 +176,14 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
     def export_qdt_handler(self) -> None:
         """Export selected profile as QDT profile"""
         profile_path = self.qdt_file_widget.filePath()
-        if profile_path:
+        backup_path = (
+            self.qdt_backup_file_widget.filePath()
+        )  # NEW sets backup_path from Widget
+        if profile_path and backup_path:  # NEW check for both
             source_profile_name = self.qdt_export_profile_cbx.currentText()
+            make = self.__profile_manager.make_backup(
+                source_profile_name, backup_path
+            )  # NEW idk how to name it tbh
             export_profile_for_qdt(
                 profile_name=source_profile_name,
                 export_path=Path(profile_path),
