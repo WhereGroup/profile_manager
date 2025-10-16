@@ -18,7 +18,7 @@ deprecated=False
 experimental=False
 hasProcessingProvider=no
 qgisMinimumVersion=3.28
-qgisMaximumVersion=3.99
+qgisMaximumVersion=4.99
 server=False
 supportsQt6=True
 
