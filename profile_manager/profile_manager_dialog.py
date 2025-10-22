@@ -1,15 +1,22 @@
 from collections import defaultdict
+from functools import partial
 from pathlib import Path
 from typing import Literal, Optional
 
 from qgis.core import QgsApplication
 from qgis.PyQt import QtWidgets, uic
-from qgis.PyQt.QtCore import QSize, Qt
-from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QDialog, QListWidget, QMessageBox, QTreeWidget
+from qgis.PyQt.QtCore import QSize, Qt, QUrl
+from qgis.PyQt.QtGui import QDesktopServices, QIcon
+from qgis.PyQt.QtWidgets import (
+    QDialog,
+    QDialogButtonBox,
+    QListWidget,
+    QMessageBox,
+    QTreeWidget,
+)
 
 # plugin
-from profile_manager.__about__ import DIR_PLUGIN_ROOT
+from profile_manager.__about__ import DIR_PLUGIN_ROOT, __uri_homepage__
 from profile_manager.gui.mdl_profiles import ProfileListModel
 from profile_manager.gui.name_profile_dialog import NameProfileDialog
 from profile_manager.gui.utils import data_sources_as_tree, plugins_as_items
@@ -38,6 +45,10 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         self.__profile_manager = profile_manager
         self.__everything_is_checked = False
         self.profile_mdl = ProfileListModel(self)
+
+        self.btn_standard_buttons.button(QDialogButtonBox.Help).setToolTip(
+            self.tr("Open documentation")
+        )
 
         # tabs icons
         self.tabWidget.setTabIcon(0, QgsApplication.getThemeIcon("user.svg"))
@@ -108,7 +119,13 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         self.editProfileButton.clicked.connect(self.__rename_profile)
         self.copyProfileButton.clicked.connect(self.__copy_profile)
 
-        self.closeButton.rejected.connect(self.reject)
+        self.btn_standard_buttons.rejected.connect(self.reject)
+        self.btn_standard_buttons.button(QDialogButtonBox.Help).clicked.connect(
+            partial(
+                QDesktopServices.openUrl,
+                QUrl(__uri_homepage__),
+            )
+        )
 
         self.export_qdt_button.clicked.connect(self.export_qdt_handler)
         self.qdt_file_widget.fileChanged.connect(self._qdt_export_dir_changed)

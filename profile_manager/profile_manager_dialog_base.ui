@@ -503,7 +503,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QDialogButtonBox" name="closeButton">
+    <widget class="QDialogButtonBox" name="btn_standard_buttons">
      <property name="standardButtons">
       <set>QDialogButtonBox::Close|QDialogButtonBox::Help</set>
      </property>
