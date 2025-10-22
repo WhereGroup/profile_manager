@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Profile Manager</string>
+   <string notr="true">Profile Manager</string>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>
@@ -23,7 +23,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_profiles">
       <attribute name="title">
@@ -42,28 +42,28 @@
           <item>
            <widget class="QPushButton" name="createProfileButton">
             <property name="text">
-             <string>New profile</string>
+             <string>New</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="copyProfileButton">
             <property name="text">
-             <string>Copy profile</string>
+             <string>Copy</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="editProfileButton">
             <property name="text">
-             <string>Rename profile</string>
+             <string>Rename</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="removeProfileButton">
             <property name="text">
-             <string>Remove profile</string>
+             <string>Remove</string>
             </property>
            </widget>
           </item>
@@ -131,6 +131,16 @@
            <widget class="QComboBox" name="comboBoxNamesSource"/>
           </item>
           <item>
+           <widget class="QCheckBox" name="checkBox_checkAll">
+            <property name="toolTip">
+             <string>Select all items in the source profile</string>
+            </property>
+            <property name="text">
+             <string>Select all items</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="choseProfileLabel">
             <property name="text">
              <string>Target profile</string>
@@ -141,12 +151,9 @@
            <widget class="QComboBox" name="comboBoxNamesTarget"/>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_checkAll">
-            <property name="toolTip">
-             <string>Select all items in the source profile</string>
-            </property>
-            <property name="text">
-             <string>Select all items</string>
+           <widget class="Line" name="line">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
@@ -167,13 +174,6 @@
             </property>
             <property name="text">
              <string>Import selected items</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="Line" name="line">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
@@ -207,7 +207,7 @@
             <widget class="QTreeWidget" name="treeWidgetSource">
              <column>
               <property name="text">
-               <string>Data sources in source profile</string>
+               <string>Source profile</string>
               </property>
              </column>
             </widget>
@@ -222,7 +222,7 @@
              </property>
              <column>
               <property name="text">
-               <string>Data sources in target profile</string>
+               <string>Target profile</string>
               </property>
              </column>
             </widget>
@@ -237,7 +237,7 @@
            <item>
             <widget class="QLabel" name="label_5">
              <property name="text">
-              <string>Plugins in source profile</string>
+              <string>Source profile</string>
              </property>
             </widget>
            </item>
@@ -247,7 +247,7 @@
            <item>
             <widget class="QLabel" name="label_6">
              <property name="text">
-              <string>Plugins in target profile</string>
+              <string>Target profile</string>
              </property>
             </widget>
            </item>
