@@ -16,7 +16,7 @@ from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QWidget
 
 # project
-from profile_manager.__about__ import DIR_PLUGIN_ROOT, __title__
+from profile_manager.__about__ import DIR_PLUGIN_ROOT, __icon_path__, __title__
 from profile_manager.handlers.bookmarks import import_bookmarks
 from profile_manager.handlers.customization import import_customizations
 from profile_manager.handlers.data_sources import (
@@ -64,9 +64,6 @@ class ProfileManager:
         self.backup_path = Path.home() / "QGIS Profile Manager Backup"
         self.qgs_profile_manager: Optional[QgsUserProfileManager] = None
         self.__dlg: Optional[ProfileManagerDialog] = None
-
-        # initialize plugin directory
-        self.__plugin_dir = Path(__file__).parent.absolute()
 
         # initialize the locale
         self.locale: str = QgsSettings().value("locale/userLocale", QLocale().name())[
@@ -122,9 +119,7 @@ class ProfileManager:
 
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
-
-        icon = QIcon(str(self.__plugin_dir / "icon.png"))
-        action = QAction(icon, __title__, self.iface.mainWindow())
+        action = QAction(QIcon(str(__icon_path__)), __title__)
         action.triggered.connect(self.run)
         action.setEnabled(True)
         self.iface.addToolBarIcon(action)
