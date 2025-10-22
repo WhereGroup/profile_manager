@@ -46,9 +46,9 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         self.__everything_is_checked = False
         self.profile_mdl = ProfileListModel(self)
 
-        self.btn_standard_buttons.button(QDialogButtonBox.Help).setToolTip(
-            self.tr("Open documentation")
-        )
+        self.btn_standard_buttons.button(
+            QDialogButtonBox.StandardButton.Help
+        ).setToolTip(self.tr("Open documentation"))
 
         # tabs icons
         self.tabWidget.setTabIcon(0, QgsApplication.getThemeIcon("user.svg"))
@@ -120,7 +120,9 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         self.copyProfileButton.clicked.connect(self.__copy_profile)
 
         self.btn_standard_buttons.rejected.connect(self.reject)
-        self.btn_standard_buttons.button(QDialogButtonBox.Help).clicked.connect(
+        self.btn_standard_buttons.button(
+            QDialogButtonBox.StandardButton.Help
+        ).clicked.connect(
             partial(
                 QDesktopServices.openUrl,
                 QUrl(__uri_homepage__),
