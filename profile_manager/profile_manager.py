@@ -9,13 +9,14 @@ from shutil import copytree
 from typing import Optional
 
 # PyQGIS
-from qgis.core import Qgis, QgsMessageLog, QgsUserProfileManager, QSettings
+from qgis.core import Qgis, QgsMessageLog, QgsSettings, QgsUserProfileManager
 from qgis.gui import QgisInterface
 from qgis.PyQt.QtCore import QCoreApplication, QLocale, QTranslator
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QWidget
 
-from profile_manager.__about__ import __title__
+# project
+from profile_manager.__about__ import DIR_PLUGIN_ROOT, __title__
 from profile_manager.handlers.bookmarks import import_bookmarks
 from profile_manager.handlers.customization import import_customizations
 from profile_manager.handlers.data_sources import (
@@ -67,13 +68,32 @@ class ProfileManager:
         # initialize plugin directory
         self.__plugin_dir = Path(__file__).parent.absolute()
 
-        # initialize locale
-        locale = QSettings().value("locale/userLocale", QLocale().name())[0:2]
-        locale_path = self.__plugin_dir / "i18n" / "ProfileManager_{}.qm".format(locale)
+        # initialize the locale
+        self.locale: str = QgsSettings().value("locale/userLocale", QLocale().name())[
+            0:2
+        ]
+        locale_path: Path = (
+            DIR_PLUGIN_ROOT
+            / f"resources/i18n/{__title__.lower().replace(" ", "_")}_{self.locale}.qm"
+        )
+        self.log(
+            message=f"Translation: {self.locale}, {locale_path} "
+            f"(exists={locale_path.exists()})",
+            log_level=4,
+        )
         if locale_path.exists():
-            self.__translator = QTranslator()
-            self.__translator.load(str(locale_path))
-            QCoreApplication.installTranslator(self.__translator)
+            self.translator = QTranslator()
+            self.translator.load(str(locale_path.resolve()))
+            QCoreApplication.installTranslator(self.translator)
+            self.log(
+                message=f"Translation loaded from file: {self.locale}, {locale_path}",
+                log_level=Qgis.MessageLevel.NoLevel,
+            )
+        else:
+            self.log(
+                message=f"Translation file does not exist: {self.locale}, {locale_path}",
+                log_level=Qgis.MessageLevel.Warning,
+            )
 
         # Declare instance attributes
         self.action: Optional[QAction] = None
