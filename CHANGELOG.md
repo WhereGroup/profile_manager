@@ -16,22 +16,34 @@ Unreleased
 
 -->
 
+## 0.7.0 - 2025-10-22
+
+- update(qdt): use new JSON schema URL by @Guts in <https://github.com/WhereGroup/profile_manager/pull/64>
+- improve(ui): add icons to tabs by @Guts in <https://github.com/WhereGroup/profile_manager/pull/72>
+- QDT export: sort plugins list a-Z by @Guts in <https://github.com/WhereGroup/profile_manager/pull/74>
+- add(feature): replace Python logger with a centralized and QGIS integrated one by @Guts in <https://github.com/WhereGroup/profile_manager/pull/78>
+- Fix translations loader by @Guts in <https://github.com/WhereGroup/profile_manager/pull/79>
+- Improve: use icon path from metadata by @Guts in <https://github.com/WhereGroup/profile_manager/pull/80>
+- fix(metadata): Remove hardcoded changelog from metadata.txt by @kannes in <https://github.com/WhereGroup/profile_manager/pull/61>
+- improve(chore): modularize QDT related model by @Guts in <https://github.com/WhereGroup/profile_manager/pull/73>
+- Update maximum QGIS version in metadata for QGIS 4 by @kannes in <https://github.com/WhereGroup/profile_manager/pull/77>
+
 ## 0.6.0 - 2025-04-03
 
-* fix(qdt profile): plugin_id should be an int by @jmkerloch in https://github.com/WhereGroup/profile_manager/pull/49
-* fix(docstrings): escape chars in sample ini files to allow code introspection by @Guts in https://github.com/WhereGroup/profile_manager/pull/51
-* Big refactoring number 2 by @kannes in https://github.com/WhereGroup/profile_manager/pull/34
-* Fix wrong enum by @kannes in https://github.com/WhereGroup/profile_manager/pull/41
-* UI improvements by @kannes in https://github.com/WhereGroup/profile_manager/pull/45
-* Misc improvements by @kannes in https://github.com/WhereGroup/profile_manager/pull/44
-* Documentation: complete contributing guide and publish to GitHub Pages using GitHub Actions by @Guts in https://github.com/WhereGroup/profile_manager/pull/52
-* Tooling: add script to update translation by @Guts in https://github.com/WhereGroup/profile_manager/pull/54
-* update(tooling): add a proposed VS Code configuration to match contributing guidelines by @Guts in https://github.com/WhereGroup/profile_manager/pull/53
-* add(tooling): dependabot configuration to track on dependencies update by @Guts in https://github.com/WhereGroup/profile_manager/pull/58
-* Check Qt6 support flag by @kannes in https://github.com/WhereGroup/profile_manager/pull/57
-* Adjust URLs to new profile directory name by @kannes in https://github.com/WhereGroup/profile_manager/pull/40
-* change(license): use GPLv2 instead of MIT to comply with upstream licenses (Qt/QGIS) by @Guts in https://github.com/WhereGroup/profile_manager/pull/18
-* Drop experimental flag by @kannes in https://github.com/WhereGroup/profile_manager/pull/55
+- fix(qdt profile): plugin_id should be an int by @jmkerloch in <https://github.com/WhereGroup/profile_manager/pull/49>
+- fix(docstrings): escape chars in sample ini files to allow code introspection by @Guts in <https://github.com/WhereGroup/profile_manager/pull/51>
+- Big refactoring number 2 by @kannes in <https://github.com/WhereGroup/profile_manager/pull/34>
+- Fix wrong enum by @kannes in <https://github.com/WhereGroup/profile_manager/pull/41>
+- UI improvements by @kannes in <https://github.com/WhereGroup/profile_manager/pull/45>
+- Misc improvements by @kannes in <https://github.com/WhereGroup/profile_manager/pull/44>
+- Documentation: complete contributing guide and publish to GitHub Pages using GitHub Actions by @Guts in <https://github.com/WhereGroup/profile_manager/pull/52>
+- Tooling: add script to update translation by @Guts in <https://github.com/WhereGroup/profile_manager/pull/54>
+- update(tooling): add a proposed VS Code configuration to match contributing guidelines by @Guts in <https://github.com/WhereGroup/profile_manager/pull/53>
+- add(tooling): dependabot configuration to track on dependencies update by @Guts in <https://github.com/WhereGroup/profile_manager/pull/58>
+- Check Qt6 support flag by @kannes in <https://github.com/WhereGroup/profile_manager/pull/57>
+- Adjust URLs to new profile directory name by @kannes in <https://github.com/WhereGroup/profile_manager/pull/40>
+- change(license): use GPLv2 instead of MIT to comply with upstream licenses (Qt/QGIS) by @Guts in <https://github.com/WhereGroup/profile_manager/pull/18>
+- Drop experimental flag by @kannes in <https://github.com/WhereGroup/profile_manager/pull/55>
 
 ## 0.5.0-beta2 - 2024-11-05
 
