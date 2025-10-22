@@ -16,9 +16,10 @@ SOURCES =	../../gui/mdl_profiles.py \
 	../../profile_manager_dialog.py \
 	../../profiles/profile_handler.py \
 	../../profiles/utils.py \
+	../../qdt_export/models.py \
 	../../qdt_export/profile_export.py \
 	../../utils.py
 
-TRANSLATIONS =	ProfileManager_de.ts \
-	ProfileManager_fr.ts \
-	ProfileManager_it.ts
+TRANSLATIONS =	profile_manager_de.ts \
+	profile_manager_fr.ts \
+	profile_manager_it.ts

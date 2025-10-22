@@ -370,169 +370,169 @@ Ein Backup wird in '{}' erstellt.</translation>
 <context>
     <name>ProfileManagerDialog</name>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="175"/>
+        <location filename="../../profile_manager_dialog.py" line="188"/>
         <source>QDT profile export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="175"/>
+        <location filename="../../profile_manager_dialog.py" line="188"/>
         <source>QDT profile have been successfully exported.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="225"/>
+        <location filename="../../profile_manager_dialog.py" line="238"/>
         <source>Please choose a profile to remove</source>
         <translation type="unfinished">Bitte ein Profile auswählen, das entfernt werden soll</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="229"/>
+        <location filename="../../profile_manager_dialog.py" line="242"/>
         <source>Please choose a profile to rename</source>
         <translation type="unfinished">Bitte ein Profile auswählen, das umbenannt werden soll</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="233"/>
+        <location filename="../../profile_manager_dialog.py" line="246"/>
         <source>Please select a profile to copy from</source>
         <translation type="unfinished">Bitte ein Profile auswählen, das kopiert werden soll</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="242"/>
+        <location filename="../../profile_manager_dialog.py" line="255"/>
         <source>The active profile cannot be removed</source>
         <translation type="unfinished">Das aktive Profil kann nicht entfernt werden</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="246"/>
+        <location filename="../../profile_manager_dialog.py" line="259"/>
         <source>The active profile cannot be renamed</source>
         <translation type="unfinished">Das aktive Profil kann nicht umbenannt werden</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="437"/>
+        <location filename="../../profile_manager_dialog.py" line="450"/>
         <source>Profile could not be created</source>
         <translation type="unfinished">Profil konnte nicht erstellt werden</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="441"/>
+        <location filename="../../profile_manager_dialog.py" line="454"/>
         <source>Profile created</source>
         <translation type="unfinished">Profil erstellt</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="441"/>
+        <location filename="../../profile_manager_dialog.py" line="454"/>
         <source>Profile &apos;{}&apos; successfully created.</source>
         <translation type="unfinished">Profil '{}' erfolgreich erstellt.</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="453"/>
+        <location filename="../../profile_manager_dialog.py" line="466"/>
         <source>Name for copy of profile &apos;{}&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="466"/>
+        <location filename="../../profile_manager_dialog.py" line="479"/>
         <source>Profile &apos;{0}&apos; could not be copied to &apos;{1}&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="474"/>
+        <location filename="../../profile_manager_dialog.py" line="487"/>
         <source>Profile copied</source>
         <translation type="unfinished">Profil kopiert</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="474"/>
+        <location filename="../../profile_manager_dialog.py" line="487"/>
         <source>Profile &apos;{0}&apos; successfully copied to &apos;{1}&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="498"/>
+        <location filename="../../profile_manager_dialog.py" line="511"/>
         <source>Profile could not be renamed</source>
         <translation type="unfinished">Profil konnte nicht umbenannt werden</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="502"/>
+        <location filename="../../profile_manager_dialog.py" line="515"/>
         <source>Profile renamed</source>
         <translation type="unfinished">Profil umbenannt</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="502"/>
+        <location filename="../../profile_manager_dialog.py" line="515"/>
         <source>Profile &apos;{0}&apos; successfully renamed to &apos;{1}&apos;.</source>
         <translation type="unfinished">Profil '{0}' erfolgreich in '{1}' umbenannt.</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="516"/>
+        <location filename="../../profile_manager_dialog.py" line="529"/>
         <source>Remove Profile</source>
         <translation type="unfinished">Gelöscht</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="516"/>
+        <location filename="../../profile_manager_dialog.py" line="529"/>
         <source>Are you sure you want to remove the profile &apos;{0}&apos;?
 
 A backup will be created at &apos;{1}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="670"/>
+        <location filename="../../profile_manager_dialog.py" line="683"/>
         <source>Backup could not be created</source>
         <translation type="unfinished">Backup konnte nicht erstellt werden</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="531"/>
+        <location filename="../../profile_manager_dialog.py" line="544"/>
         <source>Aborting removal of profile &apos;{0}&apos; due to error:
 {1}</source>
         <translation type="unfinished">Entfernung des Profils '{0}' wegen Fehler abgebrochen:
 {1}</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="543"/>
+        <location filename="../../profile_manager_dialog.py" line="556"/>
         <source>Profile could not be removed</source>
         <translation type="unfinished">Profil konnte nicht entfernt werden</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="547"/>
+        <location filename="../../profile_manager_dialog.py" line="560"/>
         <source>Profile removed</source>
         <translation type="unfinished">Profil entfernt</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="547"/>
+        <location filename="../../profile_manager_dialog.py" line="560"/>
         <source>Profile &apos;{}&apos; has been removed.</source>
         <translation type="unfinished">Profil '{}' wurde entfernt.</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="602"/>
+        <location filename="../../profile_manager_dialog.py" line="615"/>
         <source>Aborting import due to error:
 {}</source>
         <translation type="unfinished">Import wegen Fehler abgebrochen:
 {}</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="625"/>
+        <location filename="../../profile_manager_dialog.py" line="638"/>
         <source>Import Error(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="629"/>
+        <location filename="../../profile_manager_dialog.py" line="642"/>
         <source>Import</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="629"/>
+        <location filename="../../profile_manager_dialog.py" line="642"/>
         <source>Selected items have been successfully imported.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="692"/>
+        <location filename="../../profile_manager_dialog.py" line="705"/>
         <source>Removal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="670"/>
+        <location filename="../../profile_manager_dialog.py" line="683"/>
         <source>Aborting removal of selected data sources and plugins due to error:
 {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="686"/>
+        <location filename="../../profile_manager_dialog.py" line="699"/>
         <source>Removal Error(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog.py" line="692"/>
+        <location filename="../../profile_manager_dialog.py" line="705"/>
         <source>Selected data sources and plugins have been successfully removed.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -547,22 +547,22 @@ A backup will be created at &apos;{1}</source>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="45"/>
         <source>New profile</source>
-        <translation type="unfinished">Neu</translation>
+        <translation type="obsolete">Neu</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="66"/>
-        <source>Remove profile</source>
+        <source>Remove</source>
         <translation type="unfinished">Löschen</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="59"/>
         <source>Rename profile</source>
-        <translation type="unfinished">Umbenennen</translation>
+        <translation type="obsolete">Umbenennen</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="52"/>
         <source>Copy profile</source>
-        <translation type="unfinished">Kopieren</translation>
+        <translation type="obsolete">Kopieren</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="111"/>
@@ -575,27 +575,27 @@ A backup will be created at &apos;{1}</source>
         <translation type="unfinished">Plugins</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="126"/>
+        <location filename="../../profile_manager_dialog_base.ui" line="240"/>
         <source>Source profile</source>
-        <translation type="unfinished">Quellprofil</translation>
+        <translation type="unfinished">Plugins im Quellprofil</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="136"/>
+        <location filename="../../profile_manager_dialog_base.ui" line="250"/>
         <source>Target profile</source>
-        <translation type="unfinished">Zielprofil</translation>
+        <translation type="unfinished">Plugins im Zielprofil</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="149"/>
+        <location filename="../../profile_manager_dialog_base.ui" line="139"/>
         <source>Select all items</source>
         <translation type="unfinished">Alle Elemente auswählen</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="159"/>
+        <location filename="../../profile_manager_dialog_base.ui" line="166"/>
         <source>Remove selected items</source>
         <translation type="unfinished">Ausgewählte Elemente entfernen</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="169"/>
+        <location filename="../../profile_manager_dialog_base.ui" line="176"/>
         <source>Import selected items</source>
         <translation type="unfinished">Ausgewählte Elemente importieren</translation>
     </message>
@@ -613,16 +613,6 @@ A backup will be created at &apos;{1}</source>
         <location filename="../../profile_manager_dialog_base.ui" line="222"/>
         <source>Target Profile:</source>
         <translation type="obsolete">Zielprofil:</translation>
-    </message>
-    <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="240"/>
-        <source>Plugins in source profile</source>
-        <translation type="unfinished">Plugins im Quellprofil</translation>
-    </message>
-    <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="250"/>
-        <source>Plugins in target profile</source>
-        <translation type="unfinished">Plugins im Zielprofil</translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="268"/>
@@ -665,34 +655,19 @@ A backup will be created at &apos;{1}</source>
         <translation type="obsolete">Ausdrucksfunktionen</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="156"/>
+        <location filename="../../profile_manager_dialog_base.ui" line="163"/>
         <source>Remove selected items from source profile</source>
         <translation type="unfinished">Entferne auswählte Elemente aus Quellprofil</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="166"/>
+        <location filename="../../profile_manager_dialog_base.ui" line="173"/>
         <source>Import selected items from source to target profile</source>
         <translation type="unfinished">Importiere auswählte Elemente vom Quell- ins Zielprofil</translation>
     </message>
     <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="146"/>
+        <location filename="../../profile_manager_dialog_base.ui" line="136"/>
         <source>Select all items in the source profile</source>
         <translation type="unfinished">Alle Elemente des Quellprofils auswählen</translation>
-    </message>
-    <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="14"/>
-        <source>Profile Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="210"/>
-        <source>Data sources in source profile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../profile_manager_dialog_base.ui" line="225"/>
-        <source>Data sources in target profile</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="325"/>
@@ -752,6 +727,21 @@ A backup will be created at &apos;{1}</source>
     <message>
         <location filename="../../profile_manager_dialog_base.ui" line="466"/>
         <source>Export folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../profile_manager_dialog_base.ui" line="45"/>
+        <source>New</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../profile_manager_dialog_base.ui" line="52"/>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../profile_manager_dialog_base.ui" line="59"/>
+        <source>Rename</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
