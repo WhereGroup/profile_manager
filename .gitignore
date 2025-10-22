@@ -135,12 +135,13 @@ dmypy.json
 # Custom ###################################
 # ##########################################
 
-# PyQt/PyQGIS artefacts
-profile_manager/**/*.db
-
 # IDE
 .idea
 *.zip
+
+# PyQt/PyQGIS artefacts
+profile_manager/**/*.db
+*.qm
 
 # packaging
 plugins.xml
