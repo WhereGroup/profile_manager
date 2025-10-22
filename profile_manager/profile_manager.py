@@ -15,7 +15,7 @@ from qgis.PyQt.QtCore import QCoreApplication, QLocale, QTranslator
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QWidget
 
-from profile_manager.__about__ import __title__, __title_clean__
+from profile_manager.__about__ import __title__
 from profile_manager.handlers.bookmarks import import_bookmarks
 from profile_manager.handlers.customization import import_customizations
 from profile_manager.handlers.data_sources import (
