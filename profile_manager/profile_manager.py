@@ -152,17 +152,29 @@ class ProfileManager:
         self.target_data_sources = collect_data_sources(self.target_qgis_ini_file)
         self.target_plugins = collect_plugin_names(self.target_qgis_ini_file)
 
-    def make_backup(self, profile_name: str) -> Optional[str]:
+    def make_backup(self, profile_name: str, backup_dir: str) -> Optional[str]:
         """Creates a backup of the specified profile.
 
         Args:
             profile_name (str): Name of the profile to back up
+            backup_dir (str): Directory where backup should be stored
 
         Returns:
             str: A message if an error occured.
         """
+        ######################################################################
+        backup_path = Path(backup_dir)
+
+        if not backup_path.exists():
+            QgsMessageLog.logMessage(
+                f"invalid backup path: {backup_dir}",
+                "Profile Manager",
+                level=Qgis.MessageLevel.Info,
+            )
+        # return ?
+        ######################################################################
         ts = int(time.time())
-        target_path = self.backup_path / str(ts)
+        target_path = backup_path / str(ts)
         source_path = qgis_profiles_path() / profile_name
         QgsMessageLog.logMessage(
             f"Backing up profile {profile_name!r} to {target_path!r}",
