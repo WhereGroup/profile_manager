@@ -136,8 +136,7 @@ dmypy.json
 # ##########################################
 
 # PyQt/PyQGIS artefacts
-profile_manager/gui/*.db
-profile_manager/resources/**/*.db
+profile_manager/**/*.db
 
 # IDE
 .idea
