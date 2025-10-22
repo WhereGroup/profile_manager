@@ -1,4 +1,4 @@
-import logging
+# standard
 from configparser import RawConfigParser
 from dataclasses import dataclass
 from datetime import datetime
@@ -6,7 +6,14 @@ from pathlib import Path
 from re import compile
 from urllib.parse import unquote
 
-LOGGER = logging.getLogger("profile_manager")
+# PyQGIS
+from qgis.core import Qgis
+
+# plugin
+from profile_manager.toolbelt import PlgLogger
+
+# -- GLOBALS
+logger = PlgLogger()
 
 
 @dataclass
@@ -149,7 +156,10 @@ def collect_data_sources_of_provider(
                     data_sources[data_source_name][section] = {}
                 data_sources[data_source_name][section][option] = value
 
-    LOGGER.info(f"Found {len(data_sources)} {provider!r} data sources")
+    logger.log(
+        log_level=Qgis.MessageLevel.Info,
+        message=f"Found {len(data_sources)} {provider!r} data sources",
+    )
     return data_sources
 
 
@@ -157,7 +167,10 @@ def collect_data_sources(
     ini_path: Path,
 ) -> dict[str, dict[str, dict[str, dict[str, str]]]]:
     """Collect all data sources and their ini entries (=options and values inside sections)"""
-    LOGGER.info(f"Collecting data sources from  {ini_path}")
+    logger.log(
+        log_level=Qgis.MessageLevel.Info,
+        message=f"Collecting data sources from  {ini_path}",
+    )
     start_time = datetime.now()
 
     all_data_sources = {}
@@ -167,8 +180,9 @@ def collect_data_sources(
         # -> provider -> data source -> section -> option -> value
 
     time_taken = datetime.now() - start_time
-    LOGGER.debug(
-        f"Collecting data sources from {ini_path} took {time_taken.microseconds/1000} ms"
+    logger.log(
+        log_level=Qgis.MessageLevel.NoLevel,
+        message=f"Collecting data sources from {ini_path} took {time_taken.microseconds/1000} ms",
     )
 
     return all_data_sources
@@ -188,11 +202,12 @@ def import_data_sources(
             values have to be imported in which sections.
             Providers -> Data sources -> Sections -> Options -> Values
     """
-    LOGGER.info(
-        (
+    logger.log(
+        log_level=Qgis.MessageLevel.Info,
+        message=(
             f"Importing {sum([len(v) for v in data_sources_to_be_imported.values()])} "
             f"data sources to {qgis_ini_file}"
-        )
+        ),
     )
     start_time = datetime.now()
 
@@ -202,13 +217,19 @@ def import_data_sources(
 
     for provider, data_sources in data_sources_to_be_imported.items():
         for data_source in data_sources:
-            LOGGER.info(f"Importing {provider!r}: {data_source!r}")
+            logger.log(
+                log_level=Qgis.MessageLevel.Info,
+                message=f"Importing {provider!r}: {data_source!r}",
+            )
 
             # fetch sections+options for import
             sections = available_data_sources[provider][data_source]
 
             for section, options in sections.items():
-                LOGGER.debug(f"Importing {section=}, {options=}")
+                logger.log(
+                    log_level=Qgis.MessageLevel.NoLevel,
+                    message=f"Importing {section=}, {options=}",
+                )
                 if not parser.has_section(section):
                     parser.add_section(section)
                 for option, value in options.items():
@@ -218,8 +239,9 @@ def import_data_sources(
         parser.write(qgisconf, space_around_delimiters=False)
 
     time_taken = datetime.now() - start_time
-    LOGGER.debug(
-        f"Importing data sources to {qgis_ini_file} took {time_taken.microseconds / 1000} ms"
+    logger.log(
+        log_level=Qgis.MessageLevel.NoLevel,
+        message=f"Importing data sources to {qgis_ini_file} took {time_taken.microseconds / 1000} ms",
     )
 
 
@@ -237,11 +259,12 @@ def remove_data_sources(
             which sections have to be removed.
             Providers -> Data sources -> Sections -> Options
     """
-    LOGGER.info(
-        (
+    logger.log(
+        log_level=Qgis.MessageLevel.Info,
+        message=(
             f"Removing {sum([len(v) for v in data_sources_to_be_removed.values()])} "
             f"data sources from {qgis_ini_file}"
-        )
+        ),
     )
     start_time = datetime.now()
 
@@ -251,13 +274,19 @@ def remove_data_sources(
 
     for provider, data_sources in data_sources_to_be_removed.items():
         for data_source in data_sources:
-            LOGGER.info(f"Removing {provider!r}: {data_source!r}")
+            logger.log(
+                log_level=Qgis.MessageLevel.Info,
+                message=f"Removing {provider!r}: {data_source!r}",
+            )
 
             # fetch sections+options for deletion
             sections = available_data_sources[provider][data_source]
 
             for section, options in sections.items():
-                LOGGER.debug(f"Removing {section=}, {options=}")
+                logger.log(
+                    log_level=Qgis.MessageLevel.NoLevel,
+                    message=f"Removing {section=}, {options=}",
+                )
                 for option in options.keys():
                     parser.remove_option(section, option)
 
@@ -265,6 +294,7 @@ def remove_data_sources(
         parser.write(qgisconf, space_around_delimiters=False)
 
     time_taken = datetime.now() - start_time
-    LOGGER.debug(
-        f"Removing data sources from {qgis_ini_file} took {time_taken.microseconds / 1000} ms"
+    logger.log(
+        log_level=Qgis.MessageLevel.NoLevel,
+        message=f"Removing data sources from {qgis_ini_file} took {time_taken.microseconds / 1000} ms",
     )

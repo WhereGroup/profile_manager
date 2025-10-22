@@ -1,11 +1,17 @@
-import logging
+# standard
 from configparser import NoSectionError, RawConfigParser
 from datetime import datetime
 from pathlib import Path
 from shutil import copytree, rmtree
 
-LOGGER = logging.getLogger("profile_manager")
+# PyQGIS
+from qgis.core import Qgis
 
+# plugin
+from profile_manager.toolbelt import PlgLogger
+
+# -- GLOBALS
+logger = PlgLogger()
 
 # Via QGIS/python/plugins/CMakeLists.txt
 CORE_PLUGINS = [
@@ -21,7 +27,10 @@ CORE_PLUGINS = [
 
 def collect_plugin_names(qgis_ini_file: Path) -> list[str]:
     # TODO use ini AND file system, ini might have empty leftovers...
-    LOGGER.info(f"Collecting plugin names from  {qgis_ini_file}")
+    logger.log(
+        log_level=Qgis.MessageLevel.Info,
+        message=f"Collecting plugin names from  {qgis_ini_file}",
+    )
     start_time = datetime.now()
 
     ini_parser = RawConfigParser()
@@ -31,12 +40,16 @@ def collect_plugin_names(qgis_ini_file: Path) -> list[str]:
     try:
         plugins_in_profile = ini_parser.options("PythonPlugins")
     except NoSectionError:
-        LOGGER.warning(f"No plugins found in {qgis_ini_file}!")
+        logger.log(
+            log_level=Qgis.MessageLevel.Warning,
+            message=f"No plugins found in {qgis_ini_file}!",
+        )
         plugins_in_profile = []
 
     time_taken = datetime.now() - start_time
-    LOGGER.debug(
-        f"Collecting plugin names from {qgis_ini_file} took {time_taken.microseconds/1000} ms"
+    logger.log(
+        log_level=Qgis.MessageLevel.NoLevel,
+        message=f"Collecting plugin names from {qgis_ini_file} took {time_taken.microseconds/1000} ms",
     )
 
     return plugins_in_profile
@@ -71,7 +84,10 @@ def import_plugins(
         target_qgis_ini_file: Path of target QGIS3.ini file to import to
         plugin_names: List of plugins (names according to QGIS3.ini) to import
     """
-    LOGGER.info(f"Importing {len(plugin_names)} data sources to {target_profile_path}")
+    logger.log(
+        log_level=Qgis.MessageLevel.Info,
+        message=f"Importing {len(plugin_names)} data sources to {target_profile_path}",
+    )
     start_time = datetime.now()
 
     ini_parser = RawConfigParser()
@@ -100,8 +116,9 @@ def import_plugins(
         ini_parser.write(qgisconf, space_around_delimiters=False)
 
     time_taken = datetime.now() - start_time
-    LOGGER.debug(
-        f"Importing plugins to {target_profile_path} took {time_taken.microseconds / 1000} ms"
+    logger.log(
+        log_level=Qgis.MessageLevel.NoLevel,
+        message=f"Importing plugins to {target_profile_path} took {time_taken.microseconds / 1000} ms",
     )
 
 
@@ -121,7 +138,10 @@ def remove_plugins(
         qgis_ini_file: Path of target QGIS3.ini file to remove from
         plugin_names: List of plugins (names according to QGIS3.ini) to remove
     """
-    LOGGER.info(f"Removing {len(plugin_names)} data sources from {profile_path}")
+    logger.log(
+        log_level=Qgis.MessageLevel.Info,
+        message=f"Removing {len(plugin_names)} data sources from {profile_path}",
+    )
     start_time = datetime.now()
 
     ini_parser = RawConfigParser()
@@ -143,6 +163,7 @@ def remove_plugins(
         ini_parser.write(qgisconf, space_around_delimiters=False)
 
     time_taken = datetime.now() - start_time
-    LOGGER.debug(
-        f"Removing plugins from {profile_path} took {time_taken.microseconds / 1000} ms"
+    logger.log(
+        log_level=Qgis.MessageLevel.NoLevel,
+        message=f"Removing plugins from {profile_path} took {time_taken.microseconds / 1000} ms",
     )
