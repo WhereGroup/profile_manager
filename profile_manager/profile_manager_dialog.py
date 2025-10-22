@@ -37,21 +37,51 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
 
         self.__profile_manager = profile_manager
         self.__everything_is_checked = False
-
         self.profile_mdl = ProfileListModel(self)
-        self.qdt_export_profile_cbx.setModel(self.profile_mdl)
-        self.export_qdt_button.clicked.connect(self.export_qdt_handler)
-        self.export_qdt_button.setEnabled(False)
-        self.qdt_file_widget.fileChanged.connect(self._qdt_export_dir_changed)
 
-        self.comboBoxNamesSource.setModel(self.profile_mdl)
-        self.comboBoxNamesTarget.setModel(self.profile_mdl)
+        # tabs icons
+        self.tabWidget.setTabIcon(0, QgsApplication.getThemeIcon("user.svg"))
+        self.tabWidget.setTabIcon(1, QgsApplication.getThemeIcon("sync_views.svg"))
+        self.tabWidget.setTabIcon(
+            2,
+            QIcon(str(DIR_PLUGIN_ROOT.joinpath("resources", "images", "logo_qdt.svg"))),
+        )
+
+        # tab0: profiles
+        self.createProfileButton.setIcon(
+            QIcon(QgsApplication.iconPath("mActionAdd.svg"))
+        )
+        self.copyProfileButton.setIcon(
+            QIcon(QgsApplication.getThemeIcon("mActionEditCopy.svg"))
+        )
+        self.editProfileButton.setIcon(
+            QIcon(QgsApplication.getThemeIcon("mActionToggleEditing.svg"))
+        )
+        self.removeProfileButton.setIcon(
+            QIcon(QgsApplication.iconPath("mActionDeleteSelected.svg"))
+        )
         self.list_profiles.setModel(self.profile_mdl)
-        self.setFixedSize(self.size())
         self.list_profiles.setIconSize(QSize(15, 15))
 
-        self.__setup_connections()
-
+        # tab1: import/export
+        self.tabWidget_2.setTabIcon(
+            0, QgsApplication.getThemeIcon("mActionDataSourceManager.svg")
+        )
+        self.tabWidget_2.setTabIcon(
+            1, QgsApplication.getThemeIcon("mActionShowPluginManager.svg")
+        )
+        self.tabWidget_2.setTabIcon(
+            2, QgsApplication.getThemeIcon("iconClassBrowserConsole.svg")
+        )
+        self.removeThingsButton.setIcon(
+            QgsApplication.getThemeIcon("mActionRemoveSelectedFeature.svg")
+        )
+        self.importThingsButton.setIcon(
+            QgsApplication.getThemeIcon("mActionSharingImport.svg")
+        )
+        # tab1.0: data sources
+        self.comboBoxNamesSource.setModel(self.profile_mdl)
+        self.comboBoxNamesTarget.setModel(self.profile_mdl)
         # making sure that the combo boxes are set up correctly
         self.comboBoxNamesSource.currentTextChanged.emit(
             self.comboBoxNamesSource.currentText()
@@ -60,15 +90,12 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
             self.comboBoxNamesTarget.currentText()
         )
 
-        # tabs icons
-        self.tabWidget.setTabIcon(0, QgsApplication.getThemeIcon("user.svg"))
-        self.tabWidget.setTabIcon(
-            1, QgsApplication.getThemeIcon("mActionSharingImport.svg")
-        )
-        self.tabWidget.setTabIcon(
-            2,
-            QIcon(str(DIR_PLUGIN_ROOT.joinpath("resources", "images", "logo_qdt.svg"))),
-        )
+        # tab2: QDT export
+        self.qdt_export_profile_cbx.setModel(self.profile_mdl)
+
+        self.export_qdt_button.setEnabled(False)
+
+        self.__setup_connections()
 
     def __setup_connections(self):
         """Set up connections"""
@@ -82,6 +109,9 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         self.copyProfileButton.clicked.connect(self.__copy_profile)
 
         self.closeButton.rejected.connect(self.reject)
+
+        self.export_qdt_button.clicked.connect(self.export_qdt_handler)
+        self.qdt_file_widget.fileChanged.connect(self._qdt_export_dir_changed)
 
         # checkbox
         self.checkBox_checkAll.stateChanged.connect(self.__toggle_all_items)
@@ -109,13 +139,13 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         )
         checkboxes = [
             self.bookmark_check,
+            self.checkBox_checkAll,
+            self.customization_check,
             self.favourites_check,
+            self.expressions_check,
             self.models_check,
             self.scripts_check,
             self.styles_check,
-            self.expressions_check,
-            self.checkBox_checkAll,
-            self.customization_check,
         ]
         for checkbox in checkboxes:
             checkbox.stateChanged.connect(self.__conditionally_enable_import_buttons)
