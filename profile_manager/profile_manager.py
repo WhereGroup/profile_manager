@@ -1,11 +1,17 @@
-import logging
+#! python3  # noqa: E265
+
+"""Main plugin module."""
+
+# standard
 import time
 from pathlib import Path
 from shutil import copytree
 from typing import Optional
 
-from qgis.core import Qgis, QgsMessageLog, QgsUserProfileManager
-from qgis.PyQt.QtCore import QCoreApplication, QLocale, QSettings, QTranslator
+# PyQGIS
+from qgis.core import Qgis, QgsMessageLog, QgsUserProfileManager, QSettings
+from qgis.gui import QgisInterface
+from qgis.PyQt.QtCore import QCoreApplication, QLocale, QTranslator
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QWidget
 
@@ -35,28 +41,29 @@ from profile_manager.profiles.profile_handler import (
     rename_profile,
 )
 from profile_manager.profiles.utils import get_profile_qgis_ini_path, qgis_profiles_path
+from profile_manager.toolbelt import PlgLogger
 from profile_manager.utils import wait_cursor
-
-LOGGER = logging.getLogger(__title_clean__)
-logging.basicConfig(
-    format="%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s",
-    datefmt="%H:%M:%S",
-    level=logging.DEBUG,
-)
 
 
 class ProfileManager:
-    """QGIS Plugin Implementation."""
+    """QGIS Profiles Manager plugin."""
 
-    def __init__(self, iface):
+    def __init__(self, iface: QgisInterface):
+        """Constructor.
+
+        :param iface: An interface instance that will be passed to this class which \
+        provides the hook by which you can manipulate the QGIS application at run time.
+        :type iface: QgsInterface
+        """
+        # refs
+        self.iface = iface  # Save reference to the QGIS interface
+        self.log = PlgLogger().log
+
+        # attributes
         self.backup_path = Path.home() / "QGIS Profile Manager Backup"
-
-        self.qgs_profile_manager = None
-
+        self.qgs_profile_manager: Optional[QgsUserProfileManager] = None
         self.__dlg: Optional[ProfileManagerDialog] = None
 
-        # Save reference to the QGIS interface
-        self.iface = iface
         # initialize plugin directory
         self.__plugin_dir = Path(__file__).parent.absolute()
 
