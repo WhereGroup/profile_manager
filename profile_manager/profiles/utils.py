@@ -180,7 +180,7 @@ def get_profile_plugin_information(
         profile_name=profile_name, plugin_slug_name=plugin_slug_name
     )
 
-    if not all([manager_metadata, plugin_metadata]):
+    if manager_metadata is None and plugin_metadata is None:
         print(f"Plugin {plugin_slug_name} not found in profile {profile_name}")
         return None
 
