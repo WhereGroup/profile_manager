@@ -13,6 +13,13 @@ def wait_cursor():
         QGuiApplication.restoreOverrideCursor()
 
 
-def tr(message):
-    # for translating in non-QObject class contexts
-    return QCoreApplication.translate("ProfileManager", message)
+def tr(self, message: str) -> str:
+    """Get the translation for a string using Qt translation API.
+
+    :param message: string to be translated.
+    :type message: str
+
+    :returns: Translated version of message.
+    :rtype: str
+    """
+    return QCoreApplication.translate(self.__class__.__name__, message)

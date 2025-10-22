@@ -159,9 +159,16 @@ class ProfileManager:
 
         self.__dlg.exec()
 
-    # noinspection PyMethodMayBeStatic
-    def tr(self, message):
-        return QCoreApplication.translate("ProfileManager", message)
+    def tr(self, message: str) -> str:
+        """Get the translation for a string using Qt translation API.
+
+        :param message: string to be translated.
+        :type message: str
+
+        :returns: Translated version of message.
+        :rtype: str
+        """
+        return QCoreApplication.translate(self.__class__.__name__, message)
 
     def change_source_profile(self, profile_name: str):
         # TODO handle profile_name=None without any attempts of data collecting
