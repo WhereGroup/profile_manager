@@ -18,6 +18,7 @@ SOURCES =	../../gui/mdl_profiles.py \
 	../../profiles/utils.py \
 	../../qdt_export/models.py \
 	../../qdt_export/profile_export.py \
+	../../toolbelt/log_handler.py \
 	../../utils.py
 
 TRANSLATIONS =	profile_manager_de.ts \
