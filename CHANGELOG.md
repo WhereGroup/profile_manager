@@ -16,6 +16,13 @@ Unreleased
 
 -->
 
+## 0.7.1 - 2025-10-27
+
+> ♥️ Funded by Oslandia
+
+- update(ui): add more icons and remove fixed size by @Guts in <https://github.com/WhereGroup/profile_manager/pull/81>
+- update(i18n): complete French translations by @Guts in <https://github.com/WhereGroup/profile_manager/pull/82>
+
 ## 0.7.0 - 2025-10-22
 
 - update(qdt): use new JSON schema URL by @Guts in <https://github.com/WhereGroup/profile_manager/pull/64>
