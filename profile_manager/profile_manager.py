@@ -71,7 +71,7 @@ class ProfileManager:
         ]
         locale_path: Path = (
             DIR_PLUGIN_ROOT
-            / f"resources/i18n/{__title__.lower().replace(" ", "_")}_{self.locale}.qm"
+            / f"resources/i18n/{__title__.lower().replace(' ', '_')}_{self.locale}.qm"
         )
         self.log(
             message=f"Translation: {self.locale}, {locale_path} "
