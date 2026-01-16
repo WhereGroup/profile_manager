@@ -24,7 +24,7 @@ def data_sources_as_tree(
     if make_checkable:
         tree_root_item.setFlags(
             tree_root_item.flags()
-            | Qt.ItemFlag.ItemIsTristate
+            | Qt.ItemFlag.ItemIsAutoTristate
             | Qt.ItemFlag.ItemIsUserCheckable
         )
 
