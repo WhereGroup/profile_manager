@@ -146,3 +146,4 @@ profile_manager/**/*.db
 # packaging
 plugins.xml
 zip_build
+docs/static/qdt_snippet.json
