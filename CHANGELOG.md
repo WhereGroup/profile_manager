@@ -16,6 +16,12 @@ Unreleased
 
 -->
 
+## 0.7.3 - 2026-01-20
+
+> ♥️ Funded by Oslandia
+
+* fix(qt6): replace deprecated `Qt.ItemFlag.ItemIsTristate` with maintained `Qt.ItemFlag.ItemIsAutoTristate` by @Guts in <https://github.com/WhereGroup/profile_manager/pull/93>
+
 ## 0.7.2 - 2025-11-18
 
 > ♥️ Funded by Oslandia
