@@ -7,9 +7,13 @@ Configuration for project documentation using Sphinx.
 # standard
 import json
 import logging
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Union
+
+# move into project package
+sys.path.insert(0, f"{Path(__file__).parent.parent.resolve()}")
 
 # 3rd party
 import keepachangelog
