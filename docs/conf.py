@@ -5,28 +5,42 @@ Configuration for project documentation using Sphinx.
 """
 
 # standard
+import json
+import logging
 import sys
 from datetime import datetime
-from os import path
+from pathlib import Path
+from typing import Union
 
-sys.path.insert(0, path.abspath(".."))  # move into project package
+# move into project package
+sys.path.insert(0, f"{Path(__file__).parent.parent.resolve()}")
+
+# 3rd party
+import keepachangelog
 
 # Package
 from profile_manager import __about__
 
+logger: logging.Logger = logging.getLogger(__name__)
+
 # -- Project information -----------------------------------------------------
-author = __about__.__author__
-copyright = __about__.__copyright__
-description = __about__.__summary__
-project = __about__.__title__
-version = release = __about__.__version__
+changes: dict[str, dict] = keepachangelog.to_dict("../CHANGELOG.md")
+latest_version: str = [
+    v for v in changes.keys() if v not in ("Unreleased", "version_tag")
+][0]
+
+author: str = __about__.__author__
+copyright: str = __about__.__copyright__
+description: str = __about__.__summary__
+project: str = __about__.__title__
+version = release = latest_version
 
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
+extensions: list[str] = [
     # Sphinx included
     "sphinx.ext.autodoc",
     "sphinx.ext.autosectionlabel",
@@ -127,14 +141,33 @@ myst_substitutions = {
 myst_url_schemes = ("http", "https", "mailto")
 
 
+# -- Functions ------------------------------------------------------------------
+def generate_qdt_snippet(_) -> None:
+    """Generate QDT snippet for profiles.json files."""
+    logger.warning("=== START GENERATING QDT SNIPPET ===")
+
+    qdt_snippet: dict[str, Union[str, bool, int]] = {
+        "name": "Profile Manager",
+        "folder_name": "profile_manager",
+        "official_repository": True,
+        "plugin_id": 3547,
+        "version": f"{ latest_version }",
+    }
+
+    with Path("./docs/static/qdt_snippet.json").open("w", encoding="UTF8") as wf:
+        wf.write(json.dumps(qdt_snippet, indent=4, sort_keys=True))
+
+
 # -- API Doc --------------------------------------------------------
 # run api doc
 def run_apidoc(_):
     from sphinx.ext.apidoc import main
 
-    cur_dir = path.normpath(path.dirname(__file__))
-    output_path = path.join(cur_dir, "_apidoc")
-    modules = path.normpath(path.join(cur_dir, "../profile_manager"))
+    logger.info("=== START SPHINX API AUTODOC ===")
+
+    cur_dir = Path(__file__).parent.resolve()
+    output_path = str(cur_dir.joinpath("_apidoc").resolve())
+    modules = str(cur_dir.joinpath("../profile_manager/").resolve())
     exclusions = ["../.venv", "../tests"]
     main(["-e", "-f", "-M", "-o", output_path, modules] + exclusions)
 
@@ -142,3 +175,4 @@ def run_apidoc(_):
 # launch setup
 def setup(app):
     app.connect("builder-inited", run_apidoc)
+    app.connect("builder-inited", generate_qdt_snippet)

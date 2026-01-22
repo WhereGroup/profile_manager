@@ -16,6 +16,7 @@ caption: Usage
 maxdepth: 1
 ---
 usage/installation
+usage/with_qdt
 ```
 
 ```{toctree}
