@@ -77,7 +77,7 @@ jobs:
 
       - name: Download artifact from build workflow
         if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main')
-        uses: dawidd6/action-download-artifact@688efa90a08f3552e7c1420c8313e215164e8b14
+        uses: dawidd6/action-download-artifact@5c98f0b039f36ef966fdb7dfa9779262785ecb05
         with:
           allow_forks: false
           branch: main
