@@ -93,7 +93,8 @@ html_theme = "furo"
 # -- EXTENSIONS --------------------------------------------------------
 
 # Sphinx API doc
-autodoc_mock_imports = [
+autodoc_mock_imports: list[str] = [
+    "pyplugin_installer",
     "qgis.core",
     "qgis.gui",
     "qgis.PyQt",
