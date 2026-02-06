@@ -22,7 +22,3 @@ In QGIS:
 2. `Settings` tab
 3. Below the repositories list, click `Add...` and enter the URL above
 4. Once the repository is added, the plugin should appear in the `Not installed` tab.
-
-:::{warning}
-Selon votre configuration, redémarrer QGIS peut être nécessaire, le gestionnaire d'extensions ayant des comportements parfois capricieux par rapport aux dépôts tiers.
-:::
