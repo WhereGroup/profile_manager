@@ -4,7 +4,11 @@ A QGIS plugin for managing your profiles and data source connections.
 
 Published on the official QGIS plugins repository: <https://plugins.qgis.org/plugins/profile_manager/>.
 
-![Profile Manager - Manage profiles](./docs/static/profile_manager_ui_tab_manage-profiles.png) ![Profile Manager - Import plugins between profiles](./docs/static/profile_manager_ui_tab_share_plugins.png)
+<a href="https://wheregroup.github.io/profile_manager/_static/profile_manager_ui_tab_manage-profiles.png"><img src="https://wheregroup.github.io/profile_manager/_static/profile_manager_ui_tab_manage-profiles.png" width="200"></a>
+<a href="https://wheregroup.github.io/profile_manager/_static/profile_manager_ui_tab_share_plugins.png"><img src="https://wheregroup.github.io/profile_manager/_static/profile_manager_ui_tab_share_plugins.png" width="200"></a>
+<a href="https://wheregroup.github.io/profile_manager/_static/profile_manager_ui_tab_share_data-sources.png"><img src="https://wheregroup.github.io/profile_manager/_static/profile_manager_ui_tab_share_data-sources.png" width="200"></a>
+<a href="https://wheregroup.github.io/profile_manager/_static/profile_manager_ui_tab_share_other.png"><img src="https://wheregroup.github.io/profile_manager/_static/profile_manager_ui_tab_share_other.png" width="200"></a>
+<a href="https://wheregroup.github.io/profile_manager/_static/profile_manager_ui_tab_QDT-export.png"><img src="https://wheregroup.github.io/profile_manager/_static/profile_manager_ui_tab_QDT-export.png" width="200"></a>
 
 📖 Check out the documentation: <https://wheregroup.github.io/profile_manager/>.
 
