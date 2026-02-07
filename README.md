@@ -35,7 +35,7 @@ Published on the official QGIS plugins repository: <https://plugins.qgis.org/plu
 - Importing QGIS UI settings (e.g. hidden toolbar items)
 - Exporting a profile in QGIS Deployment Toolkit (QDT) format
 
-On all removal operations the user is being asked if they are certain that he wants to delete given source/profile.
+On all removal operations the user is being asked if they are certain that they want to delete given source/profile.
 Additionally, before every import or deletion, a backup of the affected profile is created in the user's home directory.
 
 ## Known (current) limitations
