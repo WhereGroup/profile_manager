@@ -1,5 +1,4 @@
 from configparser import NoSectionError, RawConfigParser
-from dataclasses import dataclass
 from pathlib import Path
 from sys import platform
 from typing import Any, Dict, List, Optional
@@ -7,6 +6,8 @@ from typing import Any, Dict, List, Optional
 import pyplugin_installer
 from qgis.core import QgsUserProfileManager
 from qgis.utils import iface
+
+from profile_manager.qdt_export.models import QdtPluginInformation
 
 
 def qgis_profiles_path() -> Path:
@@ -94,9 +95,11 @@ def get_installed_plugin_metadata(
     """
     ini_parser = RawConfigParser()
     ini_parser.optionxform = str  # str = case-sensitive option names
-    ini_parser.read(get_profile_plugin_metadata_path(profile_name, plugin_slug_name))
+    plg_metadata_path = get_profile_plugin_metadata_path(profile_name, plugin_slug_name)
+    ini_parser.read(plg_metadata_path)
     try:
         metadata = dict(ini_parser.items("general"))
+        metadata["folder_name"] = plg_metadata_path.parent.name
     except NoSectionError:
         metadata = {}
     return metadata
@@ -126,15 +129,6 @@ def get_profile_name_list() -> List[str]:
         List[str]: profile name list
     """
     return QgsUserProfileManager(qgis_profiles_path()).allProfiles()
-
-
-@dataclass
-class PluginInformation:
-    name: str
-    folder_name: str
-    official_repository: bool
-    plugin_id: Optional[int]
-    version: str
 
 
 def define_plugin_version_from_metadata(
@@ -168,7 +162,7 @@ def define_plugin_version_from_metadata(
 
 def get_profile_plugin_information(
     profile_name: str, plugin_slug_name: str
-) -> Optional[PluginInformation]:
+) -> Optional[QdtPluginInformation]:
     """Get plugin information from profile. Only official plugin are supported.
 
     Args:
@@ -181,18 +175,27 @@ def get_profile_plugin_information(
     manager_metadata = get_plugin_info_from_qgis_manager(
         plugin_slug_name=plugin_slug_name
     )
+
     plugin_metadata = get_installed_plugin_metadata(
         profile_name=profile_name, plugin_slug_name=plugin_slug_name
     )
 
-    # For now we don't support unofficial plugins
-    if manager_metadata is None:
+    if manager_metadata is None and plugin_metadata is None:
+        print(f"Plugin {plugin_slug_name} not found in profile {profile_name}")
         return None
 
-    return PluginInformation(
-        name=manager_metadata["name"],
-        folder_name=plugin_slug_name,
-        official_repository=True,  # For now we only support official repository
+    if manager_metadata is None:
+        manager_metadata = {
+            "name": plugin_metadata.get("name", plugin_slug_name),
+            "download_url": None,
+            "plugin_id": None,
+            "folder_name": plugin_metadata.get("folder_name", plugin_slug_name),
+        }
+
+    return QdtPluginInformation(
+        name=manager_metadata.get("name", plugin_slug_name),
+        download_url=manager_metadata.get("download_url"),
+        folder_name=plugin_metadata.get("folder_name", plugin_slug_name),
         plugin_id=(
             int(manager_metadata["plugin_id"])
             if manager_metadata["plugin_id"]
@@ -207,7 +210,7 @@ def get_profile_plugin_information(
 
 def get_profile_plugin_list_information(
     profile_name: str, only_activated: bool = True
-) -> List[PluginInformation]:
+) -> List[QdtPluginInformation]:
     """Get profile plugin information
 
     Args:
@@ -220,12 +223,14 @@ def get_profile_plugin_list_information(
     plugin_list: List[str] = get_installed_plugin_list(
         profile_name=profile_name, only_activated=only_activated
     )
-    # Get information about installed plugin
-    profile_plugin_list: List[PluginInformation] = []
 
+    # Get information about installed plugin
+    profile_plugin_list: List[QdtPluginInformation] = []
     for plugin_name in plugin_list:
         plugin_info = get_profile_plugin_information(profile_name, plugin_name)
         if plugin_info and plugin_info.plugin_id:
+            profile_plugin_list.append(plugin_info)
+        elif plugin_info and not plugin_info.plugin_id:
             profile_plugin_list.append(plugin_info)
 
     return profile_plugin_list
