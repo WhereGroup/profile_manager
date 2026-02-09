@@ -16,6 +16,15 @@ Unreleased
 
 -->
 
+## 0.7.4 - 2026-01-20
+
+> ♥️ Funded by Oslandia
+
+* Proposal for a new logo by @sylvainbeo in <https://github.com/WhereGroup/profile_manager/pull/98>
+* update(docs): add user guides by @Guts in <https://github.com/WhereGroup/profile_manager/pull/99>
+* improve(ui): use freshly created SVG icon instead of small png by @Guts in <https://github.com/WhereGroup/profile_manager/pull/100>
+* add(docs): auto generate QDT snippet and use keepachangelog to retrieve latest published verison from CHANGELOG.md by @Guts in <https://github.com/WhereGroup/profile_manager/pull/94>
+
 ## 0.7.3 - 2026-01-20
 
 > ♥️ Funded by Oslandia
