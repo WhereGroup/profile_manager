@@ -4,7 +4,7 @@ description=Makes handling profiles easy by giving you an UI to easily import se
 about=A QGIS Plugin that provides an UI to easily manage your profiles and import various settings from one profile to another. Compatible with QGIS Deployment Toolbelt (QDT).
 category=Plugins
 tags=profilemanager, manager, profiles, QDT, deployment, customization
-icon=icon.png
+icon=resources/images/logo_profile_manager.svg
 
 # credits and contact
 author=WhereGroup GmbH, Oslandia
