@@ -1,14 +1,14 @@
 {
   "recommendations": [
     "davidanson.vscode-markdownlint",
+    "charliermarsh.ruff",
     "eamodio.gitlens",
     "github.vscode-pull-request-github",
-    "ms-python.black-formatter",
     "ms-python.flake8",
-    "ms-python.isort",
     "ms-python.python",
     "njpwerner.autodocstring",
     "redhat.vscode-yaml",
+    "tamasfe.even-better-toml",
     "zhoufeng.pyqt-integration"
   ]
 }
