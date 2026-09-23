@@ -20,17 +20,20 @@ repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: "v0.15.20"
     hooks:
-      - id: ruff
+      - id: ruff-check
         args:
           - --fix-only
-          - --target-version=py39
-
-  - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 26.5.1
-    hooks:
-      - id: black
+          - --target-version=py311
+        types_or:
+          - python
+          - pyi
+      - id: ruff-format
         args:
-          - --target-version=py39
+          - --line-length=88
+          - --target-version=py311
+        types_or:
+          - python
+          - pyi
 
   # Disabled until PyQt translation support f-strings
   # - repo: https://github.com/asottile/pyupgrade
@@ -38,27 +41,18 @@ repos:
   #   hooks:
   #     - id: pyupgrade
   #       args:
-  #         - "--py39-plus"
-
-  - repo: https://github.com/pycqa/isort
-    rev: 9.0.0a3
-    hooks:
-      - id: isort
-        args:
-          - --profile
-          - black
-          - --filter-files
+  #         - "--py311-plus"
 
   - repo: https://github.com/pycqa/flake8
     rev: 7.3.0
     hooks:
       - id: flake8
-        additional_dependencies: ["flake8-qgis"]
+        files: ^profile_manager/.*\.py$
+        additional_dependencies:
+          - flake8-qgis
         args:
-          [
-            "--config=setup.cfg",
-            "--select=E9,F63,F7,F82,QGS101,QGS102,QGS103,QGS104,QGS106",
-          ]
+          - --config=setup.cfg
+          - --select=E9,F63,F7,F82,QGS101,QGS102,QGS103,QGS104,QGS106"
 
 ci:
   autofix_prs: true
