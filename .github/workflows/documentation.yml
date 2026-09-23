@@ -1,5 +1,15 @@
 name: "📚 Documentation"
 
+env:
+  CONDITION_IS_PUSH: ${{ github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main') }}
+  CONDITION_IS_WORKFLOW_RUN: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' }}
+  PROJECT_FOLDER: profile_manager
+  PYTHON_VERSION: 3.12
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
@@ -24,25 +34,18 @@ on:
   workflow_dispatch:
 
   workflow_run:
+    branches:
+      - main
     workflows:
       - "📦 Packaging & 🚀 Release"
     types:
       - completed
 
-# Allow one concurrent deployment per branch/pr
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
-
-env:
-  PROJECT_FOLDER: "profile_manager"
-  PYTHON_VERSION: 3.9
-
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
-  pages: write
   id-token: write
+  pages: write
 
 jobs:
   build:
@@ -58,6 +61,14 @@ jobs:
           cache: "pip"
           cache-dependency-path: "requirements/documentation.txt"
           python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache Sphinx cache
+        uses: actions/cache@v6
+        with:
+          path: docs/_build/cache
+          key: ${{ runner.os }}-sphinx-${{ hashFiles('docs/**/*') }}
+          restore-keys: |
+            ${{ runner.os }}-sphinx-
 
       - name: Install dependencies
         run: |
@@ -76,7 +87,7 @@ jobs:
           retention-days: 30
 
       - name: Download artifact from build workflow
-        if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main')
+        if: ${{ env.CONDITION_IS_PUSH || env.CONDITION_IS_WORKFLOW_RUN }}
         uses: dawidd6/action-download-artifact@v21
         with:
           allow_forks: false
@@ -91,15 +102,15 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v6
-        if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main')
+        if: ${{ env.CONDITION_IS_PUSH || env.CONDITION_IS_WORKFLOW_RUN }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
-        if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main')
+        if: ${{ env.CONDITION_IS_PUSH || env.CONDITION_IS_WORKFLOW_RUN }}
         with:
           path: docs/_build/html/
 
       - name: Deploy to GitHub Pages
         id: deployment
-        if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main')
+        if: ${{ env.CONDITION_IS_PUSH || env.CONDITION_IS_WORKFLOW_RUN }}
         uses: actions/deploy-pages@v5
