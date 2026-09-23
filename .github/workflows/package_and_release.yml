@@ -2,7 +2,7 @@ name: "📦 Packaging & 🚀 Release"
 
 env:
   PROJECT_FOLDER: "profile_manager"
-  PYTHON_VERSION: 3.9
+  PYTHON_VERSION: 3.12
 
 on:
   push:
@@ -43,11 +43,12 @@ jobs:
       - name: Install system requirements
         run: |
           sudo apt update
-          sudo apt install qt5-qmake qttools5-dev-tools
-          python3 -m pip install -U pyqt5-tools
+          sudo apt install qt5-qmake qttools5-dev-tools pyqt5-dev-tools
 
       - name: Update translations
-        run: pylupdate5 -noobsolete -verbose ${{ env.PROJECT_FOLDER }}/resources/i18n/plugin_translation.pro
+        run: |
+          python3 scripts/generate_translation_profile.py
+          pylupdate5 -noobsolete -verbose ${{ env.PROJECT_FOLDER }}/resources/i18n/plugin_translation.pro
 
       - name: Compile translations
         run: lrelease ${{ env.PROJECT_FOLDER }}/resources/i18n/*.ts
@@ -74,9 +75,9 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v7
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
           cache-dependency-path: "requirements/packaging.txt"
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install project requirements
         run: |
