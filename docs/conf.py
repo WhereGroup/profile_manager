@@ -12,6 +12,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Union
 
+
 # move into project package
 sys.path.insert(0, f"{Path(__file__).parent.parent.resolve()}")
 
@@ -20,6 +21,7 @@ import keepachangelog
 
 # Package
 from profile_manager import __about__
+
 
 logger: logging.Logger = logging.getLogger(__name__)
 
@@ -152,7 +154,7 @@ def generate_qdt_snippet(_) -> None:
         "folder_name": "profile_manager",
         "official_repository": True,
         "plugin_id": 3547,
-        "version": f"{ latest_version }",
+        "version": f"{latest_version}",
     }
 
     with Path("./docs/static/qdt_snippet.json").open("w", encoding="UTF8") as wf:

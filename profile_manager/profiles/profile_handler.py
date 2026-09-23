@@ -9,6 +9,7 @@ from qgis.core import QgsApplication, QgsError, QgsUserProfileManager
 
 from profile_manager.profiles.utils import qgis_profiles_path
 
+
 # validation rule from QGIS' QgsUserProfileSelectionDialog
 VALID_PROJECT_NAME_REGEX = "[^/\\\\]+"
 

@@ -12,6 +12,7 @@ from qgis.core import Qgis
 # plugin
 from profile_manager.toolbelt import PlgLogger
 
+
 # -- GLOBALS
 logger = PlgLogger()
 
@@ -182,7 +183,7 @@ def collect_data_sources(
     time_taken = datetime.now() - start_time
     logger.log(
         log_level=Qgis.MessageLevel.NoLevel,
-        message=f"Collecting data sources from {ini_path} took {time_taken.microseconds/1000} ms",
+        message=f"Collecting data sources from {ini_path} took {time_taken.microseconds / 1000} ms",
     )
 
     return all_data_sources

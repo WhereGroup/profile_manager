@@ -14,6 +14,7 @@ from qgis.utils import iface
 # project package
 from profile_manager.__about__ import __title__
 
+
 # ############################################################################
 # ########## Classes ###############
 # ##################################
@@ -38,7 +39,7 @@ class PlgLogger(logging.Handler):
         button_connect: Optional[Callable] = None,
         # parent
         parent_location: Optional[QWidget] = None,
-    ):
+    ) -> None:
         """Send messages to QGIS messages windows and to the user as a message bar. \
         Plugin name is used as title. If debug mode is disabled, only warnings (1) and \
         errors (2) or with push are sent.

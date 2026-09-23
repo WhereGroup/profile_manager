@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+
 # variables
 src_path = Path("profile_manager")
 i18n_path = src_path.joinpath("resources/i18n")
