@@ -15,7 +15,7 @@ class QdtPluginInformation:
     def as_dict(self) -> Dict[str, Any]:
         """Custom as_dict method to handle properties and specific vars.
 
-        :return: dict of PluginInformation
+        :return: plugin as dict, ready to be written into a QDT profile.json
         :rtype: Dict[str, Any]
         """
         out_dict = {
@@ -32,7 +32,8 @@ class QdtPluginInformation:
 
     @property
     def official_repository(self) -> bool:
-        """Check if plugin is from official QGIS repository.
+        """Check if plugin is from official QGIS repository, based on its
+        download URL.
 
         :return: True if plugin is from official QGIS repository.
         :rtype: bool
