@@ -12,6 +12,7 @@ from profile_manager.profiles.utils import (
 )
 from profile_manager.qdt_export.models import QDTProfileInfos
 
+
 QDT_PROFILE_SCHEMA = "https://raw.githubusercontent.com/qgis-deployment/qgis-deployment-toolbelt-cli/main/docs/schemas/profile/qgis_profile.json"
 
 

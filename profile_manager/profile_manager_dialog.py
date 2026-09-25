@@ -27,6 +27,7 @@ from profile_manager.qdt_export.profile_export import (
 )
 from profile_manager.utils import wait_cursor
 
+
 FORM_CLASS, _ = uic.loadUiType(
     Path(__file__).parent.absolute() / "profile_manager_dialog_base.ui"
 )
@@ -108,7 +109,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
 
         self.__setup_connections()
 
-    def __setup_connections(self):
+    def __setup_connections(self) -> None:
         """Set up connections"""
         # buttons
         self.importThingsButton.clicked.connect(self.__import_selected_things)
@@ -240,7 +241,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
                 self.tr("QDT profile have been successfully exported."),
             )
 
-    def __conditionally_enable_import_buttons(self):
+    def __conditionally_enable_import_buttons(self) -> None:
         source = self.__profile_manager.source_profile_name
         target = self.__profile_manager.target_profile_name
         any_thing_is_selected = any(
@@ -277,7 +278,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
             self.importThingsButton.setEnabled(True)
             self.removeThingsButton.setEnabled(True)
 
-    def __conditionally_enable_profile_buttons(self):
+    def __conditionally_enable_profile_buttons(self) -> None:
         """Sets up buttons of the Profiles tab so that the user is not tempted to do "impossible" things.
 
         Called when profile selection changes in the Profiles tab.
@@ -319,7 +320,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
             self.copyProfileButton.setToolTip("")
             self.copyProfileButton.setEnabled(True)
 
-    def __on_source_profile_changed(self, profile_name: str):
+    def __on_source_profile_changed(self, profile_name: str) -> None:
         self.__profile_manager.change_source_profile(profile_name)
 
         if profile_name is None:
@@ -334,7 +335,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
             )
         self.__conditionally_enable_import_buttons()
 
-    def __on_target_profile_changed(self, profile_name: str):
+    def __on_target_profile_changed(self, profile_name: str) -> None:
         self.__profile_manager.change_target_profile(profile_name)
 
         if profile_name is None:
@@ -366,8 +367,8 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         self,
         data_sources: dict,
         data_sources_widget: QTreeWidget,
-        make_checkable=True,
-    ):
+        make_checkable: bool = True,
+    ) -> None:
         """Populates the specified widget with a fancy list of available data sources.
 
         Args:
@@ -392,7 +393,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
 
     def __populate_plugins_list(
         self, plugins: list[str], plugins_widget: QListWidget, make_checkable: bool
-    ):
+    ) -> None:
         """Populates the specified widget with a fancy list of available plugins.
 
         Args:
@@ -406,7 +407,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         for item in items:
             plugins_widget.addItem(item)
 
-    def __set_all_checkstates(self, checkstate: Qt.CheckState):
+    def __set_all_checkstates(self, checkstate: Qt.CheckState) -> None:
         """Sets the specified checkstate for all enabled checkboxes."""
         for item in self.treeWidgetSource.findItems(
             "", Qt.MatchFlag.MatchContains | Qt.MatchFlag.MatchRecursive
@@ -434,7 +435,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
             if checkbox.isEnabled():
                 checkbox.setCheckState(checkstate)
 
-    def __toggle_all_items(self):
+    def __toggle_all_items(self) -> None:
         """Checks/Unchecks every enabled checkbox in the gui"""
         if self.__everything_is_checked:
             checkstate = Qt.CheckState.Unchecked
@@ -443,14 +444,14 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         self.__set_all_checkstates(checkstate)
         self.__everything_is_checked = not self.__everything_is_checked
 
-    def __uncheck_everything(self):
+    def __uncheck_everything(self) -> None:
         """Unchecks every checkbox"""
         self.__set_all_checkstates(Qt.CheckState.Unchecked)
         self.__everything_is_checked = False
 
     def __update_data_sources_widget(
         self, profile_to_update: Literal["source", "target"], data_sources: dict
-    ):
+    ) -> None:
         """Updates data sources and plugin lists in the UI"""
         if profile_to_update == "source":
             self.__populate_data_sources(
@@ -469,7 +470,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
 
     def __update_plugins_widget(
         self, profile_to_update: Literal["source", "target"], plugins: list[str]
-    ):
+    ) -> None:
         if profile_to_update == "source":
             self.__populate_plugins_list(
                 plugins=plugins,
@@ -485,7 +486,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
         else:
             raise ValueError("Only source or target profile can be updated")
 
-    def __create_profile(self):
+    def __create_profile(self) -> None:
         """Creates a new profile"""
         name_dialog = NameProfileDialog()
         if name_dialog.exec() == QDialog.DialogCode.Rejected:
@@ -508,7 +509,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
 
         self.populate_profile_listings()
 
-    def __copy_profile(self):
+    def __copy_profile(self) -> None:
         """Copies the selected profile"""
         source_profile_name = self.get_list_selection_profile_name()
 
@@ -543,7 +544,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
 
         self.populate_profile_listings()
 
-    def __rename_profile(self):
+    def __rename_profile(self) -> None:
         """Renames the selected profile"""
         old_profile_name = self.get_list_selection_profile_name()
 
@@ -571,7 +572,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
 
         self.populate_profile_listings()
 
-    def __remove_profile(self):
+    def __remove_profile(self) -> None:
         """Removes the selected profile (after creating a backup)."""
         profile_name = self.get_list_selection_profile_name()
 
@@ -650,7 +651,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
                 plugin_names.append(item.text())
         return plugin_names
 
-    def __import_selected_things(self):
+    def __import_selected_things(self) -> None:
         """Import selected things from the source to the target profile.
 
         Aborts and shows an error message if no backup could be made.
@@ -705,7 +706,7 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
                 )
             self.__uncheck_everything()
 
-    def __remove_selected_things(self):
+    def __remove_selected_things(self) -> None:
         """Removes selected things from the source profile.
 
         Aborts and shows an error message if no backup could be made.

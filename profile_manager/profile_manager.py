@@ -112,7 +112,7 @@ class ProfileManager:
         self.target_data_sources: Optional[dict] = None
         self.target_plugins: Optional[list] = None
 
-    def __refresh_qgis_browser_panels(self):
+    def __refresh_qgis_browser_panels(self) -> None:
         """Refreshes the browser of the qgis instance from which this plugin was started"""
         self.iface.mainWindow().findChildren(QWidget, "Browser")[0].refresh()
         self.iface.mainWindow().findChildren(QWidget, "Browser2")[0].refresh()

@@ -10,6 +10,7 @@ from qgis.core import Qgis
 # plugin
 from profile_manager.toolbelt import PlgLogger
 
+
 # -- GLOBALS
 logger = PlgLogger()
 
@@ -49,7 +50,7 @@ def collect_plugin_names(qgis_ini_file: Path) -> list[str]:
     time_taken = datetime.now() - start_time
     logger.log(
         log_level=Qgis.MessageLevel.NoLevel,
-        message=f"Collecting plugin names from {qgis_ini_file} took {time_taken.microseconds/1000} ms",
+        message=f"Collecting plugin names from {qgis_ini_file} took {time_taken.microseconds / 1000} ms",
     )
 
     return plugins_in_profile

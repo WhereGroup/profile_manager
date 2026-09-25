@@ -1,0 +1,101 @@
+extend-exclude = [".venv", ".vscode", "tests/dev"]
+
+fix = true
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+# Group violations by containing file.
+output-format = "grouped"
+
+# Enumerate all fixed violations.
+show-fixes = true
+
+target-version = "py311"
+
+[format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+# Enable auto-formatting of code examples in docstrings. Markdown,
+# reStructuredText code/literal blocks and doctests are all supported.
+#
+# This is currently disabled by default, but it is planned for this
+# to be opt-out in the future.
+docstring-code-format = false
+
+# Set the line length limit used when formatting code snippets in
+# docstrings.
+#
+# This only has an effect when the `docstring-code-format` setting is
+# enabled.
+docstring-code-line-length = "dynamic"
+
+
+[lint]
+select = [
+    "A",   # flake8-builtins
+    "ANN", # flake8-annotations
+    "B",   # flake8-bugbear
+    "C90", # mccabe complexity
+    "E",   # pycodestyle errors
+    "ERA", # eradicate (commented code)
+    "F",   # pyflakes
+    "I",   # isort
+    "LOG", # flake8-logging
+    "N",   # pep8-naming
+    "PTH", # flake8-pathlib
+    "S",   # bandit security
+    "TC",  # flake8-type-checking
+    "T20", # flake8-print
+    "W",   # pycodestyle warnings
+]
+
+ignore = [
+    "ANN201", # Missing return type annotation for public function
+    "ANN204", #  Missing return type annotation for special method `__init__`
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`
+    "E501",   # line too long (handled by black)
+    # "E203", # whitespace before ':'
+    # "E226", # missing whitespace around arithmetic operator
+    # "E24",  # multiple spaces after ','
+]
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[lint.isort]
+combine-as-imports = true
+force-single-line = false
+lines-after-imports = 2
+split-on-trailing-comma = true
+
+[lint.mccabe]
+max-complexity = 15
+
+[lint.pydocstyle]
+convention = "pep257"
+
+[lint.per-file-ignores]
+# Ignore `E402` (import violations) in all `__init__.py` files
+"__init__.py" = ["E402"]
+"builder/*.py" = ["T201"] # Ignore T20 (print) in packaging scripts
+"docs/conf.py" = [
+    "A001",
+    "ANN001",
+    "ANN2",
+    "S101",
+    "T20",
+] # Ignore rules in Sphinx config
+"tests/test_*.py" = ["ANN001", "ANN2", "S101", "T20"] # Ignore rules in tests
+"oslandia/gui/stylesheet.py" = ["F401"] # Ignore non use import
