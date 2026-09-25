@@ -9,9 +9,9 @@ icon=resources/images/logo_profile_manager.svg
 # credits and contact
 author=WhereGroup GmbH, Oslandia
 email=info@wheregroup.com
-homepage=https://WhereGroup.github.io/profile_manager/
-repository=https://github.com/WhereGroup/profile_manager/
-tracker=https://github.com/WhereGroup/profile_manager/issues
+homepage=https://qgis-deployment.github.io/profile_manager/
+repository=https://github.com/qgis-deployment/profile_manager/
+tracker=https://github.com/qgis-deployment/profile_manager/issues
 
 # QGIS extensions manager flags
 deprecated=False
