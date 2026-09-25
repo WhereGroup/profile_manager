@@ -20,6 +20,7 @@ from profile_manager.__about__ import DIR_PLUGIN_ROOT, __uri_homepage__
 from profile_manager.gui.mdl_profiles import ProfileListModel
 from profile_manager.gui.name_profile_dialog import NameProfileDialog
 from profile_manager.gui.utils import data_sources_as_tree, plugins_as_items
+from profile_manager.profiles.utils import get_current_profile_name
 from profile_manager.qdt_export.models import QDTProfileInfos
 from profile_manager.qdt_export.profile_export import (
     export_profile_for_qdt,
@@ -235,10 +236,33 @@ class ProfileManagerDialog(QtWidgets.QDialog, FORM_CLASS):
                 clear_export_path=self.qdt_clear_export_folder_checkbox.isChecked(),
                 export_inactive_plugin=self.qdt_inactive_plugin_export_checkbox.isChecked(),
             )
+            current_profile_name = get_current_profile_name()
+            if source_profile_name != current_profile_name:
+                report_plugins_repository: str = self.tr(
+                    "\n\nProfile '{source}' is not the current profile: plugin "
+                    "repositories were resolved from profile '{current}'."
+                ).format(source=source_profile_name, current=current_profile_name)
+                report_plugins_repository += self.tr(
+                    "\nPlugin repositories and download URLs are read from the QGIS "
+                    "plugin manager, which only knows the current profile "
+                    "('{current}'):\n"
+                    "- plugins neither installed in '{current}' nor available in "
+                    "its repositories are exported without repository nor URL, "
+                    "so QDT will not be able to install them;\n"
+                    "- repositories only configured in '{source}' are ignored;\n"
+                    "- plugins installed in both profiles from different "
+                    "repositories are exported with the repository used in "
+                    "'{current}'.\n\n"
+                    "To get a complete export, restart QGIS with profile "
+                    "'{source}' and export it again."
+                ).format(source=source_profile_name, current=current_profile_name)
+            else:
+                report_plugins_repository = ""
             QMessageBox.information(
                 self,
                 self.tr("QDT profile export"),
-                self.tr("QDT profile have been successfully exported."),
+                self.tr("QDT profile have been successfully exported.")
+                + report_plugins_repository,
             )
 
     def __conditionally_enable_import_buttons(self) -> None:
