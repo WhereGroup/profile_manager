@@ -218,7 +218,7 @@ def get_profile_plugin_list_information(
         only_activated (bool, optional): True to get only activated plugin, False to get all installed plugins. Defaults to True.
 
     Returns:
-        List[PluginInformation]: list of PluginInformation
+        List[QdtPluginInformation]: list of plugin information
     """
     plugin_list: List[str] = get_installed_plugin_list(
         profile_name=profile_name, only_activated=only_activated
@@ -228,9 +228,7 @@ def get_profile_plugin_list_information(
     profile_plugin_list: List[QdtPluginInformation] = []
     for plugin_name in plugin_list:
         plugin_info = get_profile_plugin_information(profile_name, plugin_name)
-        if plugin_info and plugin_info.plugin_id:
-            profile_plugin_list.append(plugin_info)
-        elif plugin_info and not plugin_info.plugin_id:
+        if plugin_info:
             profile_plugin_list.append(plugin_info)
 
     return profile_plugin_list
