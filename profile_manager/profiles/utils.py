@@ -4,10 +4,13 @@ from sys import platform
 from typing import Any, Dict, List, Optional
 
 import pyplugin_installer
-from qgis.core import QgsUserProfileManager
+from qgis.core import Qgis, QgsUserProfileManager
 from qgis.utils import iface
 
 from profile_manager.qdt_export.models import QdtPluginInformation
+from profile_manager.toolbelt import PlgLogger
+
+logger = PlgLogger()
 
 
 def qgis_profiles_path() -> Path:
@@ -147,15 +150,15 @@ def define_plugin_version_from_metadata(
     if "version" in plugin_metadata:
         return plugin_metadata["version"]
 
-    # Fallback to stable version
-    if manager_metadata["version_available_stable"]:
-        return manager_metadata["version_available_stable"]
-    # Fallback to experimental version
-    if manager_metadata["version_available_experimental"]:
-        return manager_metadata["version_available_experimental"]
-    # Fallback to available version
-    if manager_metadata["version_available"]:
-        return manager_metadata["version_available"]
+    # Fallback to stable, experimental and available versions from plugin manager
+    for key in (
+        "version_available_stable",
+        "version_available_experimental",
+        "version_available",
+    ):
+        if version := manager_metadata.get(key):
+            return version
+
     # No version defined
     return ""
 
@@ -163,14 +166,17 @@ def define_plugin_version_from_metadata(
 def get_profile_plugin_information(
     profile_name: str, plugin_slug_name: str
 ) -> Optional[QdtPluginInformation]:
-    """Get plugin information from profile. Only official plugin are supported.
+    """Get plugin information from profile, whatever the repository it was
+    installed from (official, third-party or none).
 
     Args:
         profile_name (str): profile name
         plugin_slug_name (str):  plugin slug name
 
     Returns:
-        Optional[PluginInformation]: plugin information, None if plugin is not official
+        Optional[QdtPluginInformation]: plugin information, None if the plugin is
+            neither known by the QGIS plugin manager nor has readable metadata in
+            the profile
     """
     manager_metadata = get_plugin_info_from_qgis_manager(
         plugin_slug_name=plugin_slug_name
@@ -180,8 +186,11 @@ def get_profile_plugin_information(
         profile_name=profile_name, plugin_slug_name=plugin_slug_name
     )
 
-    if manager_metadata is None and plugin_metadata is None:
-        print(f"Plugin {plugin_slug_name} not found in profile {profile_name}")
+    if not manager_metadata and not plugin_metadata:
+        logger.log(
+            message=f"Plugin {plugin_slug_name} not found in profile {profile_name}",
+            log_level=Qgis.MessageLevel.Warning,
+        )
         return None
 
     if manager_metadata is None:
@@ -189,7 +198,6 @@ def get_profile_plugin_information(
             "name": plugin_metadata.get("name", plugin_slug_name),
             "download_url": None,
             "plugin_id": None,
-            "folder_name": plugin_metadata.get("folder_name", plugin_slug_name),
         }
 
     return QdtPluginInformation(
