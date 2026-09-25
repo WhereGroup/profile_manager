@@ -4,11 +4,13 @@ from sys import platform
 from typing import Any, Dict, List, Optional
 
 import pyplugin_installer
+from pyplugin_installer.installer_data import repositories
 from qgis.core import Qgis, QgsUserProfileManager
 from qgis.utils import iface
 
 from profile_manager.qdt_export.models import QdtPluginInformation
 from profile_manager.toolbelt import PlgLogger
+
 
 logger = PlgLogger()
 
@@ -125,6 +127,32 @@ def get_plugin_info_from_qgis_manager(
     return iface.pluginManagerInterface().pluginMetadata(plugin_slug_name)
 
 
+def get_plugin_repository_url(manager_metadata: Dict[str, Any]) -> Optional[str]:
+    """Get plugins.xml URL of the repository a plugin was installed from.
+
+    Only repositories known by the current QGIS session are available.
+
+    Args:
+        manager_metadata (Dict[str, Any]): metadata from QGIS plugin manager
+
+    Returns:
+        Optional[str]: repository URL, None for plugins not related to a repository
+    """
+    repo_name = manager_metadata.get("zip_repository")
+    if not repo_name:
+        return None
+    return repositories.all().get(repo_name, {}).get("url") or None
+
+
+def get_current_profile_name() -> str:
+    """Get name of the profile used by the current QGIS session.
+
+    Returns:
+        str: current profile name
+    """
+    return iface.userProfileManager().userProfile().name()
+
+
 def get_profile_name_list() -> List[str]:
     """Get profile name list from current installed QGIS
 
@@ -203,6 +231,7 @@ def get_profile_plugin_information(
     return QdtPluginInformation(
         name=manager_metadata.get("name", plugin_slug_name),
         download_url=manager_metadata.get("download_url"),
+        repository_url=get_plugin_repository_url(manager_metadata),
         folder_name=plugin_metadata.get("folder_name", plugin_slug_name),
         plugin_id=(
             int(manager_metadata["plugin_id"])
