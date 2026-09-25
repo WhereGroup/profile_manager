@@ -207,7 +207,7 @@ class ProfileManager:
                 return self.tr("Error while creating backup directory: {}").format(e)
 
         ts = int(time.time())
-        target_path = self.backup_path / str(ts)
+        target_path = backup_directory / f"{profile_name}_{str(ts)}"
         source_path = qgis_profiles_path() / profile_name
         QgsMessageLog.logMessage(
             f"Backing up profile {profile_name!r} to {target_path!r}",
